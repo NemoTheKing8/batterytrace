@@ -1,0 +1,1484 @@
+[
+  {
+    "product_id": "cuktech-pb060",
+    "carbon_kg_co2eq": 4.5,
+    "carbon_industry_low": 3.0,
+    "carbon_industry_avg": 6.2,
+    "carbon_industry_high": 12.0,
+    "water_liters": 310,
+    "water_industry_low": 200,
+    "water_industry_avg": 480,
+    "water_industry_high": 980,
+    "cobalt_g": 2.0,
+    "nickel_g": 0.8,
+    "lithium_g": 0.5,
+    "manganese_g": 0.3,
+    "toxic_soil_dilution_tonnes": 0.9,
+    "cobalt_soil_dilution_tonnes": 0.9,
+    "nickel_soil_dilution_tonnes": 0.005,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 150,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 38,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 6.2,
+    "ctue_recycle": 0.31,
+    "production_energy_mj": 4.5,
+    "energy_per_full_cycle_mj": 0.08,
+    "break_even_cycles": 56,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 19 公里（普通燃油车）","value":19,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 5 个月吸收的碳","value":5,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1 顿火锅的碳排放","value":1,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 5%","value":5,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 240 小时","value":240,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 155 天的饮水量","value":155,"unit":"天"},
+        {"metric_type":"water","text":"≈ 2 次标准浴缸满水","value":2,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 0.8 公斤大米的用水量","value":0.8,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 12%","value":12,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 50 次","value":50,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 0.9 吨土壤稀释至安全标准","value":0.9,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 相当于 900 个标准花盆的土壤量","value":900,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 2 节 18650 电芯的金属含量","value":2,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个小型家庭花园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要的土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 你的第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 塑料外壳寿命超过 4 个世纪","value":4,"unit":"世纪"},
+        {"metric_type":"degrade","text":"≈ 电路板比埃及金字塔还难降解","value":400,"unit":"年"},
+        {"metric_type":"degrade","text":"≈ 铝合金组件将在 150 年后开始分解","value":150,"unit":"年"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 62% 的材料最终进入填埋场","value":62,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 的锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 小容量充电宝更易被随手丢弃","value":1,"unit":"现实"},
+        {"metric_type":"recycle","text":"≈ 相当于浪费了 25 个塑料瓶的材料","value":25,"unit":"个"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需要充满 56 次才能抵消生产能耗","value":56,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 如果一周充 1 次，大概要 1.1 年","value":1.1,"unit":"年"},
+        {"metric_type":"energy","text":"≈ 生产能耗够 15W 灯泡亮 12 天","value":12,"unit":"天"},
+        {"metric_type":"energy","text":"≈ 小容量充电宝更频繁地被更换","value":1,"unit":"现实"},
+        {"metric_type":"energy","text":"≈ 多数人用不到 56 次就换新的了","value":56,"unit":"次"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-wpb100p",
+    "carbon_kg_co2eq": 5.8,
+    "carbon_industry_low": 3.8,
+    "carbon_industry_avg": 7.5,
+    "carbon_industry_high": 14.0,
+    "water_liters": 558,
+    "water_industry_low": 350,
+    "water_industry_avg": 860,
+    "water_industry_high": 1750,
+    "cobalt_g": 3.3,
+    "nickel_g": 1.3,
+    "lithium_g": 0.8,
+    "manganese_g": 0.5,
+    "toxic_soil_dilution_tonnes": 1.5,
+    "cobalt_soil_dilution_tonnes": 1.5,
+    "nickel_soil_dilution_tonnes": 0.008,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 200,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 38,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 10.1,
+    "ctue_recycle": 0.51,
+    "production_energy_mj": 7.0,
+    "energy_per_full_cycle_mj": 0.14,
+    "break_even_cycles": 50,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 24 公里（普通燃油车）","value":24,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 7 个月吸收的碳","value":7,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.2 顿火锅的碳排放","value":1.2,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 6%","value":6,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 310 小时","value":310,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 280 天的饮水量","value":280,"unit":"天"},
+        {"metric_type":"water","text":"≈ 4 次标准浴缸满水","value":4,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 1.4 公斤大米的用水量","value":1.4,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 22%","value":22,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 90 次","value":90,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 1.5 吨土壤稀释至安全标准","value":1.5,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 相当于 1500 个标准花盆的土壤量","value":1500,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 含钴量是 6000mAh 充电宝的 1.7 倍","value":1.7,"unit":"倍"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个小型社区花园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 塑料外壳寿命超过 4 个世纪","value":4,"unit":"世纪"},
+        {"metric_type":"degrade","text":"≈ 液态硅胶背板需数百年分解","value":400,"unit":"年"},
+        {"metric_type":"degrade","text":"≈ 内含 15 颗 N56 磁铁永不降解","value":15,"unit":"颗"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 62% 的材料最终进入填埋场","value":62,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ N56 磁铁 15 颗，磁铁难以回收","value":15,"unit":"颗"},
+        {"metric_type":"recycle","text":"≈ 软包电池回收比圆柱更复杂","value":1,"unit":"现实"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 50 次才能抵消生产能耗","value":50,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 无线充损耗高，回本更慢","value":1,"unit":"现实"},
+        {"metric_type":"energy","text":"≈ 磁吸充电发热大，能量损失 20%+","value":20,"unit":"%"},
+        {"metric_type":"energy","text":"≈ 多数人在 50 次前就换了","value":50,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 磁吸充电宝能量效率低于有线","value":1,"unit":"现实"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-lpb252n",
+    "carbon_kg_co2eq": 10.2,
+    "carbon_industry_low": 6.5,
+    "carbon_industry_avg": 13.0,
+    "carbon_industry_high": 24.0,
+    "water_liters": 1279,
+    "water_industry_low": 800,
+    "water_industry_avg": 1950,
+    "water_industry_high": 3900,
+    "cobalt_g": 8.5,
+    "nickel_g": 3.5,
+    "lithium_g": 2.0,
+    "manganese_g": 1.3,
+    "toxic_soil_dilution_tonnes": 3.8,
+    "cobalt_soil_dilution_tonnes": 3.8,
+    "nickel_soil_dilution_tonnes": 0.02,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 300,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 38,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 26.4,
+    "ctue_recycle": 1.32,
+    "production_energy_mj": 16.0,
+    "energy_per_full_cycle_mj": 0.32,
+    "break_even_cycles": 50,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 42 公里（普通燃油车）","value":42,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 10 个月吸收的碳","value":10,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 2 顿火锅的碳排放","value":2,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 11%","value":11,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 550 小时","value":550,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 640 天的饮水量","value":640,"unit":"天"},
+        {"metric_type":"water","text":"≈ 9 次标准浴缸满水","value":9,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 3.2 公斤大米的用水量","value":3.2,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 50%","value":50,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 210 次","value":210,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 3.8 吨土壤稀释至安全标准","value":3.8,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 相当于 3800 个标准花盆的土壤量","value":3800,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 含钴量是 6000mAh 充电宝的 4.3 倍","value":4.3,"unit":"倍"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个街区公园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 5 节 21700 电芯外壳需数百年降解","value":5,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ 自带 USB-C 编织线含塑料不可降解","value":1,"unit":"根"},
+        {"metric_type":"degrade","text":"≈ 电路板在人类灭绝后还会存在","value":1,"unit":"永远"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 62% 的材料最终进入填埋场","value":62,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 5 节 21700 电芯含大量可回收金属","value":5,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 大容量充电宝回收价值更高","value":1,"unit":"优势"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 50 次才能抵消生产能耗","value":50,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 25000mAh 一周充一次，要 1 年回本","value":1,"unit":"年"},
+        {"metric_type":"energy","text":"≈ 大容量充电宝回本周期相当","value":50,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 多数人在 50 次前就换了","value":50,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 自带线减少额外购买数据线的污染","value":1,"unit":"根"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-cp24",
+    "carbon_kg_co2eq": 8.8,
+    "carbon_industry_low": 5.5,
+    "carbon_industry_avg": 11.5,
+    "carbon_industry_high": 21.0,
+    "water_liters": 1059,
+    "water_industry_low": 680,
+    "water_industry_avg": 1620,
+    "water_industry_high": 3300,
+    "cobalt_g": 4.0,
+    "nickel_g": 1.6,
+    "lithium_g": 1.0,
+    "manganese_g": 0.6,
+    "toxic_soil_dilution_tonnes": 1.8,
+    "cobalt_soil_dilution_tonnes": 1.8,
+    "nickel_soil_dilution_tonnes": 0.01,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 250,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 38,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 12.4,
+    "ctue_recycle": 0.62,
+    "production_energy_mj": 12.0,
+    "energy_per_full_cycle_mj": 0.26,
+    "break_even_cycles": 46,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 36 公里（普通燃油车）","value":36,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 9 个月吸收的碳","value":9,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.8 顿火锅的碳排放","value":1.8,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 9%","value":9,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 470 小时","value":470,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 530 天的饮水量","value":530,"unit":"天"},
+        {"metric_type":"water","text":"≈ 7 次标准浴缸满水","value":7,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 2.6 公斤大米的用水量","value":2.6,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 42%","value":42,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 175 次","value":175,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 1.8 吨土壤稀释至安全标准","value":1.8,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 相当于 1800 个标准花盆的土壤量","value":1800,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 含钴量是 6000mAh 充电宝的 2 倍","value":2,"unit":"倍"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个社区花园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 2 条自带编织线含塑料不可降解","value":2,"unit":"条"},
+        {"metric_type":"degrade","text":"≈ Lightning 线 MFi 认证但一样是塑料","value":1,"unit":"根"},
+        {"metric_type":"degrade","text":"≈ 电路板在人类灭绝后还会存在","value":1,"unit":"永远"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 62% 的材料最终进入填埋场","value":62,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 2 块软包电芯回收比圆柱更复杂","value":2,"unit":"块"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 自带线增加回收拆解难度","value":2,"unit":"条"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 46 次才能抵消生产能耗","value":46,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 20000mAh 大容量，回本周期更短","value":1,"unit":"优势"},
+        {"metric_type":"energy","text":"≈ 自带线 + MFi 认证提升产品寿命","value":1,"unit":"优势"},
+        {"metric_type":"energy","text":"≈ 多数人在 46 次前就换了","value":46,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 自带双线减少额外购买数据线的污染","value":2,"unit":"根"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-pb150s",
+    "carbon_kg_co2eq": 7.5,
+    "carbon_industry_low": 4.8,
+    "carbon_industry_avg": 9.8,
+    "carbon_industry_high": 18.0,
+    "water_liters": 841,
+    "water_industry_low": 520,
+    "water_industry_avg": 1280,
+    "water_industry_high": 2600,
+    "cobalt_g": 5.0,
+    "nickel_g": 2.0,
+    "lithium_g": 1.2,
+    "manganese_g": 0.8,
+    "toxic_soil_dilution_tonnes": 2.2,
+    "cobalt_soil_dilution_tonnes": 2.2,
+    "nickel_soil_dilution_tonnes": 0.01,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 250,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 38,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 15.5,
+    "ctue_recycle": 0.78,
+    "production_energy_mj": 10.5,
+    "energy_per_full_cycle_mj": 0.21,
+    "break_even_cycles": 50,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 31 公里（普通燃油车）","value":31,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 7.5 个月吸收的碳","value":7.5,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.5 顿火锅的碳排放","value":1.5,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 8%","value":8,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 400 小时","value":400,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 420 天的饮水量","value":420,"unit":"天"},
+        {"metric_type":"water","text":"≈ 6 次标准浴缸满水","value":6,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 2.1 公斤大米的用水量","value":2.1,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 33%","value":33,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 140 次","value":140,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 2.2 吨土壤稀释至安全标准","value":2.2,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 相当于 2200 个标准花盆的土壤量","value":2200,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 3 块碳硅负极电芯含更多金属","value":3,"unit":"块"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个社区公园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ GaN 器件本身稳定但封装塑料不降解","value":1,"unit":"永远"},
+        {"metric_type":"degrade","text":"≈ TFT 屏幕含液晶和偏光片","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 电路板在人类灭绝后还会存在","value":1,"unit":"永远"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 62% 的材料最终进入填埋场","value":62,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 碳硅负极电芯回收技术尚不成熟","value":1,"unit":"风险"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ GaN 器件回收价值高但难度大","value":1,"unit":"项"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 50 次才能抵消生产能耗","value":50,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 15000mAh 中等容量回本周约 1 年","value":1,"unit":"年"},
+        {"metric_type":"energy","text":"≈ GaN 效率高减少充电过程损耗","value":1,"unit":"优势"},
+        {"metric_type":"energy","text":"≈ 多数人在 50 次前就换了","value":50,"unit":"次"},
+        {"metric_type":"energy","text":"≈ GaN 器件提升转换效率","value":1,"unit":"优势"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-pb100p",
+    "carbon_kg_co2eq": 5.5,
+    "carbon_industry_low": 3.5,
+    "carbon_industry_avg": 7.2,
+    "carbon_industry_high": 13.5,
+    "water_liters": 512,
+    "water_industry_low": 320,
+    "water_industry_avg": 780,
+    "water_industry_high": 1600,
+    "cobalt_g": 4.0,
+    "nickel_g": 1.6,
+    "lithium_g": 1.0,
+    "manganese_g": 0.6,
+    "toxic_soil_dilution_tonnes": 1.8,
+    "cobalt_soil_dilution_tonnes": 1.8,
+    "nickel_soil_dilution_tonnes": 0.01,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 200,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 38,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 12.3,
+    "ctue_recycle": 0.62,
+    "production_energy_mj": 7.5,
+    "energy_per_full_cycle_mj": 0.13,
+    "break_even_cycles": 58,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 23 公里（普通燃油车）","value":23,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 5.5 个月吸收的碳","value":5.5,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.1 顿火锅的碳排放","value":1.1,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 6%","value":6,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 295 小时","value":295,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 256 天的饮水量","value":256,"unit":"天"},
+        {"metric_type":"water","text":"≈ 3.5 次标准浴缸满水","value":3.5,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 1.3 公斤大米的用水量","value":1.3,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 20%","value":20,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 85 次","value":85,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 1.8 吨土壤稀释至安全标准","value":1.8,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 4 节 18650 电芯的金属总量","value":4,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 150W 高功率输出需要更多电池","value":150,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个小型社区花园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 4 节 18650 钢壳电芯数百年降解","value":4,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ TFT 屏幕含液晶和偏光片","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 电路板在人类灭绝后还会存在","value":1,"unit":"永远"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 62% 的材料最终进入填埋场","value":62,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 4 节 18650 电芯含可回收金属","value":4,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 铝散热板可回收","value":1,"unit":"优势"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 58 次才能抵消生产能耗","value":58,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 150W 高功率意味着更快的回本","value":150,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 大功率充电宝使用频率更高","value":1,"unit":"优势"},
+        {"metric_type":"energy","text":"≈ 多数人在 58 次前就换了","value":58,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 150W 快充减少充电等待时间","value":1,"unit":"优势"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-pb1055",
+    "carbon_kg_co2eq": 5.0,
+    "carbon_industry_low": 3.2,
+    "carbon_industry_avg": 6.5,
+    "carbon_industry_high": 12.0,
+    "water_liters": 475,
+    "water_industry_low": 300,
+    "water_industry_avg": 720,
+    "water_industry_high": 1500,
+    "cobalt_g": 3.4,
+    "nickel_g": 1.4,
+    "lithium_g": 0.8,
+    "manganese_g": 0.5,
+    "toxic_soil_dilution_tonnes": 1.5,
+    "cobalt_soil_dilution_tonnes": 1.5,
+    "nickel_soil_dilution_tonnes": 0.009,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 200,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 38,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 10.5,
+    "ctue_recycle": 0.53,
+    "production_energy_mj": 6.8,
+    "energy_per_full_cycle_mj": 0.13,
+    "break_even_cycles": 52,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 21 公里（普通燃油车）","value":21,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 5 个月吸收的碳","value":5,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1 顿火锅的碳排放","value":1,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 5%","value":5,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 270 小时","value":270,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 238 天的饮水量","value":238,"unit":"天"},
+        {"metric_type":"water","text":"≈ 3 次标准浴缸满水","value":3,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 1.2 公斤大米的用水量","value":1.2,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 19%","value":19,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 78 次","value":78,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 1.5 吨土壤稀释至安全标准","value":1.5,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 2 节 21700 电芯的金属总量","value":2,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 机身减半但电芯密度更高","value":1,"unit":"特点"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个小型家庭花园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 提绳含尼龙纤维不可降解","value":1,"unit":"根"},
+        {"metric_type":"degrade","text":"≈ 2 节 21700 钢壳电芯数百年降解","value":2,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ 电路板在人类灭绝后还会存在","value":1,"unit":"永远"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 62% 的材料最终进入填埋场","value":62,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 2 节 21700 电芯含可回收金属","value":2,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 铝合金散热板可回收","value":1,"unit":"优势"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 52 次才能抵消生产能耗","value":52,"unit":"次"},
+        {"metric_type":"energy","text":"≈ Mini 机身减半但同容量","value":1,"unit":"特点"},
+        {"metric_type":"energy","text":"≈ 55W 适合日常，回本约 1 年","value":1,"unit":"年"},
+        {"metric_type":"energy","text":"≈ 提绳设计提升便携性","value":1,"unit":"优势"},
+        {"metric_type":"energy","text":"≈ 多数人在 52 次前就换了","value":52,"unit":"次"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-pb150p",
+    "carbon_kg_co2eq": 7.2,
+    "carbon_industry_low": 4.5,
+    "carbon_industry_avg": 9.4,
+    "carbon_industry_high": 17.5,
+    "water_liters": 783,
+    "water_industry_low": 490,
+    "water_industry_avg": 1190,
+    "water_industry_high": 2400,
+    "cobalt_g": 5.1,
+    "nickel_g": 2.1,
+    "lithium_g": 1.2,
+    "manganese_g": 0.8,
+    "toxic_soil_dilution_tonnes": 2.3,
+    "cobalt_soil_dilution_tonnes": 2.3,
+    "nickel_soil_dilution_tonnes": 0.01,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 250,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 38,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 15.8,
+    "ctue_recycle": 0.79,
+    "production_energy_mj": 10.0,
+    "energy_per_full_cycle_mj": 0.19,
+    "break_even_cycles": 53,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 30 公里（普通燃油车）","value":30,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 7 个月吸收的碳","value":7,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.4 顿火锅的碳排放","value":1.4,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 7.5%","value":7.5,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 385 小时","value":385,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 390 天的饮水量","value":390,"unit":"天"},
+        {"metric_type":"water","text":"≈ 5 次标准浴缸满水","value":5,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 2 公斤大米的用水量","value":2,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 31%","value":31,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 130 次","value":130,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 2.3 吨土壤稀释至安全标准","value":2.3,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 3 节 21700 电芯的金属总量","value":3,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 120W 高功率需更多电池","value":120,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个社区公园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 3 节 21700 钢壳电芯数百年降解","value":3,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ TFT 彩屏含液晶和偏光片","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 电路板在人类灭绝后还会存在","value":1,"unit":"永远"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 62% 的材料最终进入填埋场","value":62,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 3 节 21700 电芯含可回收金属","value":3,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 2C1A 多接口增加拆解复杂度","value":3,"unit":"口"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 53 次才能抵消生产能耗","value":53,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 15000mAh 回本约 1 年","value":1,"unit":"年"},
+        {"metric_type":"energy","text":"≈ 120W 快充提升使用频率","value":120,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 多数人在 53 次前就换了","value":53,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 自充 100W 大幅缩短回充时间","value":100,"unit":"W"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-pb200u",
+    "carbon_kg_co2eq": 9.1,
+    "carbon_industry_low": 5.5,
+    "carbon_industry_avg": 11.8,
+    "carbon_industry_high": 22.0,
+    "water_liters": 1060,
+    "water_industry_low": 660,
+    "water_industry_avg": 1610,
+    "water_industry_high": 3200,
+    "cobalt_g": 8.0,
+    "nickel_g": 3.2,
+    "lithium_g": 2.0,
+    "manganese_g": 1.2,
+    "toxic_soil_dilution_tonnes": 3.6,
+    "cobalt_soil_dilution_tonnes": 3.6,
+    "nickel_soil_dilution_tonnes": 0.02,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 250,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 42,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 24.7,
+    "ctue_recycle": 1.24,
+    "production_energy_mj": 11.7,
+    "energy_per_full_cycle_mj": 0.26,
+    "break_even_cycles": 45,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 36 公里（普通燃油车）","value":36,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 9 个月吸收的碳","value":9,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.8 顿火锅的碳排放","value":1.8,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 9.5%","value":9.5,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 485 小时","value":485,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 530 天的饮水量","value":530,"unit":"天"},
+        {"metric_type":"water","text":"≈ 6.5 次标准浴缸满水","value":6.5,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 2.7 公斤大米的用水量","value":2.7,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 42%","value":42,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 177 次","value":177,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 3.6 吨土壤稀释至安全标准","value":3.6,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 8 节 18650 电芯的金属总量","value":8,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 210W 超高功率需更多电池","value":210,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个小型公园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 8 节 18650 钢壳电芯数百年降解","value":8,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ 1.3寸 TFT 彩屏含液晶和偏光片","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 铝合金均热板数百年降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 58% 的材料最终进入填埋场","value":58,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 8 节 18650 电芯含可回收金属","value":8,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 2C1A 多接口增加拆解复杂度","value":3,"unit":"口"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 45 次才能抵消生产能耗","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 20000mAh 回本约 10 个月","value":10,"unit":"月"},
+        {"metric_type":"energy","text":"≈ 210W 快充提升使用频率","value":210,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 多数人在 45 次前就换了","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 自充 140W 大幅缩短回充时间","value":140,"unit":"W"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-ba652u",
+    "carbon_kg_co2eq": 5.3,
+    "carbon_industry_low": 3.2,
+    "carbon_industry_avg": 6.9,
+    "carbon_industry_high": 13.0,
+    "water_liters": 480,
+    "water_industry_low": 300,
+    "water_industry_avg": 740,
+    "water_industry_high": 1480,
+    "cobalt_g": 3.0,
+    "nickel_g": 1.2,
+    "lithium_g": 0.8,
+    "manganese_g": 0.5,
+    "toxic_soil_dilution_tonnes": 1.4,
+    "cobalt_soil_dilution_tonnes": 1.4,
+    "nickel_soil_dilution_tonnes": 0.008,
+    "plastic_degradation_years": 350,
+    "aluminum_degradation_years": 200,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 45,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 9.3,
+    "ctue_recycle": 0.47,
+    "production_energy_mj": 5.4,
+    "energy_per_full_cycle_mj": 0.12,
+    "break_even_cycles": 45,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 21 公里（普通燃油车）","value":21,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 5 个月吸收的碳","value":5,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1 顿火锅的碳排放","value":1,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 5.5%","value":5.5,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 285 小时","value":285,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 240 天的饮水量","value":240,"unit":"天"},
+        {"metric_type":"water","text":"≈ 3 次标准浴缸满水","value":3,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 1.2 公斤大米的用水量","value":1.2,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 19%","value":19,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 80 次","value":80,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 1.4 吨土壤稀释至安全标准","value":1.4,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 3 节 18650 电芯的金属总量","value":3,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 二合一设计含充电器电路","value":1,"unit":"项"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个儿童沙池","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 14 代孙辈还在等它消失","value":14,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 3 节 18650 钢壳电芯数百年降解","value":3,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ TFT 彩屏含液晶和偏光片","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ GaN+充电器电路数百年降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 55% 的材料最终进入填埋场","value":55,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 3 节 18650 电芯含可回收金属","value":3,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 双USB-C增加拆解复杂度","value":2,"unit":"口"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 45 次才能抵消生产能耗","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 二合一设计减少单独充电器购买","value":1,"unit":"台"},
+        {"metric_type":"energy","text":"≈ 120W Turbo 提升使用频率","value":120,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 旁路充电可当充电器长期使用","value":1,"unit":"项"},
+        {"metric_type":"energy","text":"≈ 多数人在 45 次前就换了","value":45,"unit":"次"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-pb200",
+    "carbon_kg_co2eq": 8.9,
+    "carbon_industry_low": 5.3,
+    "carbon_industry_avg": 11.6,
+    "carbon_industry_high": 21.5,
+    "water_liters": 1070,
+    "water_industry_low": 670,
+    "water_industry_avg": 1630,
+    "water_industry_high": 3200,
+    "cobalt_g": 8.0,
+    "nickel_g": 3.2,
+    "lithium_g": 2.0,
+    "manganese_g": 1.2,
+    "toxic_soil_dilution_tonnes": 3.6,
+    "cobalt_soil_dilution_tonnes": 3.6,
+    "nickel_soil_dilution_tonnes": 0.02,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 200,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 40,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 24.7,
+    "ctue_recycle": 1.24,
+    "production_energy_mj": 11.9,
+    "energy_per_full_cycle_mj": 0.26,
+    "break_even_cycles": 46,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 36 公里（普通燃油车）","value":36,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 9 个月吸收的碳","value":9,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.8 顿火锅的碳排放","value":1.8,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 9.3%","value":9.3,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 475 小时","value":475,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 535 天的饮水量","value":535,"unit":"天"},
+        {"metric_type":"water","text":"≈ 6.7 次标准浴缸满水","value":6.7,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 2.7 公斤大米的用水量","value":2.7,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 43%","value":43,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 178 次","value":178,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 3.6 吨土壤稀释至安全标准","value":3.6,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 8 节 18650 电芯的金属总量","value":8,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 100W 功率需要 8 节电芯支撑","value":100,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个社区公园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 8 节 18650 钢壳电芯数百年降解","value":8,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ LED 数码管含砷化镓","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 石墨散热铜箔数百年降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 60% 的材料最终进入填埋场","value":60,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 8 节 18650 电芯含可回收金属","value":8,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 2C1A 多接口增加拆解复杂度","value":3,"unit":"口"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 46 次才能抵消生产能耗","value":46,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 20000mAh 回本约 1 年","value":1,"unit":"年"},
+        {"metric_type":"energy","text":"≈ 65W 输入充满约 3 小时","value":65,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 多数人在 46 次前就换了","value":46,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 100W 总输出可同时充两台设备","value":100,"unit":"W"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-pb200p",
+    "carbon_kg_co2eq": 8.9,
+    "carbon_industry_low": 5.3,
+    "carbon_industry_avg": 11.6,
+    "carbon_industry_high": 21.5,
+    "water_liters": 1060,
+    "water_industry_low": 660,
+    "water_industry_avg": 1620,
+    "water_industry_high": 3200,
+    "cobalt_g": 6.8,
+    "nickel_g": 2.8,
+    "lithium_g": 1.6,
+    "manganese_g": 1.1,
+    "toxic_soil_dilution_tonnes": 3.1,
+    "cobalt_soil_dilution_tonnes": 3.1,
+    "nickel_soil_dilution_tonnes": 0.02,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 200,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 42,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 21.1,
+    "ctue_recycle": 1.06,
+    "production_energy_mj": 11.8,
+    "energy_per_full_cycle_mj": 0.26,
+    "break_even_cycles": 45,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 36 公里（普通燃油车）","value":36,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 9 个月吸收的碳","value":9,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.8 顿火锅的碳排放","value":1.8,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 9.3%","value":9.3,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 475 小时","value":475,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 530 天的饮水量","value":530,"unit":"天"},
+        {"metric_type":"water","text":"≈ 6.6 次标准浴缸满水","value":6.6,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 2.7 公斤大米的用水量","value":2.7,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 42%","value":42,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 177 次","value":177,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 3.1 吨土壤稀释至安全标准","value":3.1,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 4 节 21700 电芯的金属总量","value":4,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 150W 高功率需高质量电芯","value":150,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个小型公园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 4 节 21700 钢壳电芯数百年降解","value":4,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ LED 数码管含砷化镓","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 铝合金散热板数百年降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 58% 的材料最终进入填埋场","value":58,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 4 节 21700 电芯含可回收金属","value":4,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 2C1A 多接口增加拆解复杂度","value":3,"unit":"口"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 45 次才能抵消生产能耗","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 20000mAh 回本约 11 个月","value":11,"unit":"月"},
+        {"metric_type":"energy","text":"≈ 90W 快充输入缩短回充时间","value":90,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 多数人在 45 次前就换了","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 150W 总输出可同时快充三台设备","value":150,"unit":"W"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-p23",
+    "carbon_kg_co2eq": 10.7,
+    "carbon_industry_low": 6.4,
+    "carbon_industry_avg": 13.9,
+    "carbon_industry_high": 26.0,
+    "water_liters": 1330,
+    "water_industry_low": 830,
+    "water_industry_avg": 2000,
+    "water_industry_high": 4000,
+    "cobalt_g": 8.5,
+    "nickel_g": 3.5,
+    "lithium_g": 2.0,
+    "manganese_g": 1.4,
+    "toxic_soil_dilution_tonnes": 3.8,
+    "cobalt_soil_dilution_tonnes": 3.8,
+    "nickel_soil_dilution_tonnes": 0.02,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 250,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 45,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 26.4,
+    "ctue_recycle": 1.32,
+    "production_energy_mj": 16.2,
+    "energy_per_full_cycle_mj": 0.32,
+    "break_even_cycles": 51,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 43 公里（普通燃油车）","value":43,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 11 个月吸收的碳","value":11,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 2.1 顿火锅的碳排放","value":2.1,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 11%","value":11,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 570 小时","value":570,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 665 天的饮水量","value":665,"unit":"天"},
+        {"metric_type":"water","text":"≈ 8.3 次标准浴缸满水","value":8.3,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 3.3 公斤大米的用水量","value":3.3,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 53%","value":53,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 222 次","value":222,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 3.8 吨土壤稀释至安全标准","value":3.8,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 5 节 21700 电芯的金属总量","value":5,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 210W 超高功率需 5 串电池","value":210,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个中型公园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 5 节 21700 钢壳电芯数百年降解","value":5,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ TFT 彩屏含液晶和偏光片","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 脉冲蓝灯带含稀土荧光粉","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 透明外壳设计让考古学家一眼认出","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 55% 的材料最终进入填埋场","value":55,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 5 节 21700 电芯含可回收金属","value":5,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 2C1A 多接口增加拆解复杂度","value":3,"unit":"口"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 51 次才能抵消生产能耗","value":51,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 25000mAh 回本约 1 年","value":1,"unit":"年"},
+        {"metric_type":"energy","text":"≈ 140W PD3.1 可为笔记本满速充电","value":140,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 多数人在 51 次前就换了","value":51,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 210W 三路独立输出","value":210,"unit":"W"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-lpb100",
+    "carbon_kg_co2eq": 5.5,
+    "carbon_industry_low": 3.3,
+    "carbon_industry_avg": 7.2,
+    "carbon_industry_high": 13.5,
+    "water_liters": 520,
+    "water_industry_low": 330,
+    "water_industry_avg": 800,
+    "water_industry_high": 1600,
+    "cobalt_g": 3.4,
+    "nickel_g": 1.4,
+    "lithium_g": 0.8,
+    "manganese_g": 0.5,
+    "toxic_soil_dilution_tonnes": 1.5,
+    "cobalt_soil_dilution_tonnes": 1.5,
+    "nickel_soil_dilution_tonnes": 0.009,
+    "plastic_degradation_years": 300,
+    "aluminum_degradation_years": 150,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 40,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 10.6,
+    "ctue_recycle": 0.53,
+    "production_energy_mj": 5.8,
+    "energy_per_full_cycle_mj": 0.13,
+    "break_even_cycles": 45,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 22 公里（普通燃油车）","value":22,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 5.5 个月吸收的碳","value":5.5,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.1 顿火锅的碳排放","value":1.1,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 5.7%","value":5.7,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 293 小时","value":293,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 260 天的饮水量","value":260,"unit":"天"},
+        {"metric_type":"water","text":"≈ 3.3 次标准浴缸满水","value":3.3,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 1.3 公斤大米的用水量","value":1.3,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 21%","value":21,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 87 次","value":87,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 1.5 吨土壤稀释至安全标准","value":1.5,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 2 节 21700 电芯的金属总量","value":2,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 33W 入门级快充","value":33,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个儿童沙池","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 12 代孙辈还在等它消失","value":12,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 2 节 21700 钢壳电芯数百年降解","value":2,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ 48锭编织自带线耐磨但难降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 水蓝色LED灯带含稀土荧光粉","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 60% 的材料最终进入填埋场","value":60,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 2 节 21700 电芯含可回收金属","value":2,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 自带线一体设计增加拆解难度","value":1,"unit":"项"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 45 次才能抵消生产能耗","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 10000mAh 回本约 9 个月","value":9,"unit":"月"},
+        {"metric_type":"energy","text":"≈ 33W 输出为手机满速充电","value":33,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 多数人在 45 次前就换了","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 自带线即插即用零损耗","value":1,"unit":"项"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-lpb200nl",
+    "carbon_kg_co2eq": 9.0,
+    "carbon_industry_low": 5.4,
+    "carbon_industry_avg": 11.7,
+    "carbon_industry_high": 22.0,
+    "water_liters": 1080,
+    "water_industry_low": 680,
+    "water_industry_avg": 1650,
+    "water_industry_high": 3300,
+    "cobalt_g": 4.0,
+    "nickel_g": 1.6,
+    "lithium_g": 1.0,
+    "manganese_g": 0.6,
+    "toxic_soil_dilution_tonnes": 1.8,
+    "cobalt_soil_dilution_tonnes": 1.8,
+    "nickel_soil_dilution_tonnes": 0.01,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 250,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 40,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 12.8,
+    "ctue_recycle": 0.64,
+    "production_energy_mj": 12.1,
+    "energy_per_full_cycle_mj": 0.27,
+    "break_even_cycles": 45,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 36 公里（普通燃油车）","value":36,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 9 个月吸收的碳","value":9,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.8 顿火锅的碳排放","value":1.8,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 9.4%","value":9.4,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 480 小时","value":480,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 540 天的饮水量","value":540,"unit":"天"},
+        {"metric_type":"water","text":"≈ 6.8 次标准浴缸满水","value":6.8,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 2.7 公斤大米的用水量","value":2.7,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 43%","value":43,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 180 次","value":180,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 1.8 吨土壤稀释至安全标准","value":1.8,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 2 块聚合物电芯的金属总量","value":2,"unit":"块"},
+        {"metric_type":"toxic","text":"≈ 40W 软包电芯钴含量较低","value":40,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个篮球场土壤","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 聚合物软包比钢壳更难回收","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ Lightning MFi线材含PVC","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 数显屏幕含液晶材料","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 60% 的材料最终进入填埋场","value":60,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 软包电芯回收难度高于圆柱","value":1,"unit":"项"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 多接口+双自带线增加拆解难度","value":4,"unit":"口"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 45 次才能抵消生产能耗","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 20000mAh 回本约 11 个月","value":11,"unit":"月"},
+        {"metric_type":"energy","text":"≈ 40W 双向快充输入","value":40,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 多数人在 45 次前就换了","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ Lightning+USB-C双线即插即用","value":2,"unit":"条"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-cp24s",
+    "carbon_kg_co2eq": 8.6,
+    "carbon_industry_low": 5.2,
+    "carbon_industry_avg": 11.2,
+    "carbon_industry_high": 21.0,
+    "water_liters": 1040,
+    "water_industry_low": 650,
+    "water_industry_avg": 1590,
+    "water_industry_high": 3200,
+    "cobalt_g": 4.0,
+    "nickel_g": 1.6,
+    "lithium_g": 1.0,
+    "manganese_g": 0.6,
+    "toxic_soil_dilution_tonnes": 1.8,
+    "cobalt_soil_dilution_tonnes": 1.8,
+    "nickel_soil_dilution_tonnes": 0.01,
+    "plastic_degradation_years": 400,
+    "aluminum_degradation_years": 250,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 40,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 12.4,
+    "ctue_recycle": 0.62,
+    "production_energy_mj": 11.6,
+    "energy_per_full_cycle_mj": 0.26,
+    "break_even_cycles": 45,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 34 公里（普通燃油车）","value":34,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 8.5 个月吸收的碳","value":8.5,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.7 顿火锅的碳排放","value":1.7,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 9%","value":9,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 460 小时","value":460,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 520 天的饮水量","value":520,"unit":"天"},
+        {"metric_type":"water","text":"≈ 6.5 次标准浴缸满水","value":6.5,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 2.6 公斤大米的用水量","value":2.6,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 42%","value":42,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 173 次","value":173,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 1.8 吨土壤稀释至安全标准","value":1.8,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 2 块聚合物电芯的金属总量","value":2,"unit":"块"},
+        {"metric_type":"toxic","text":"≈ 40W 输出功率","value":40,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个篮球场土壤","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 16 代孙辈还在等它消失","value":16,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 聚合物软包比钢壳更难回收","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 一体式数码管含液晶材料","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 自带USB-C线编织耐磨但难降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 60% 的材料最终进入填埋场","value":60,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 软包电芯回收难度高于圆柱","value":1,"unit":"项"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 多接口USB-C自带线增加拆解难度","value":2,"unit":"口"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 45 次才能抵消生产能耗","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 20000mAh 回本约 10 个月","value":10,"unit":"月"},
+        {"metric_type":"energy","text":"≈ 40W 双向快充","value":40,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 多数人在 45 次前就换了","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ USB-C自带线即插即用","value":1,"unit":"条"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-wpb100m",
+    "carbon_kg_co2eq": 5.6,
+    "carbon_industry_low": 3.4,
+    "carbon_industry_avg": 7.3,
+    "carbon_industry_high": 13.5,
+    "water_liters": 530,
+    "water_industry_low": 340,
+    "water_industry_avg": 810,
+    "water_industry_high": 1600,
+    "cobalt_g": 2.0,
+    "nickel_g": 0.8,
+    "lithium_g": 0.5,
+    "manganese_g": 0.3,
+    "toxic_soil_dilution_tonnes": 0.9,
+    "cobalt_soil_dilution_tonnes": 0.9,
+    "nickel_soil_dilution_tonnes": 0.005,
+    "plastic_degradation_years": 300,
+    "aluminum_degradation_years": 150,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 35,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 6.2,
+    "ctue_recycle": 0.31,
+    "production_energy_mj": 5.9,
+    "energy_per_full_cycle_mj": 0.13,
+    "break_even_cycles": 45,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 22 公里（普通燃油车）","value":22,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 5.6 个月吸收的碳","value":5.6,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 1.1 顿火锅的碳排放","value":1.1,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 5.8%","value":5.8,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 300 小时","value":300,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 265 天的饮水量","value":265,"unit":"天"},
+        {"metric_type":"water","text":"≈ 3.3 次标准浴缸满水","value":3.3,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 1.3 公斤大米的用水量","value":1.3,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 21%","value":21,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 88 次","value":88,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 0.9 吨土壤稀释至安全标准","value":0.9,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 1 块聚合物电芯的金属总量","value":1,"unit":"块"},
+        {"metric_type":"toxic","text":"≈ 15W Qi无线充电线圈含铜","value":15,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个儿童沙池","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 12 代孙辈还在等它消失","value":12,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 聚合物软包电芯数百年降解","value":1,"unit":"块"},
+        {"metric_type":"degrade","text":"≈ 磁铁环和隔磁片难降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 充电底座含金属触点","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 65% 的材料最终进入填埋场","value":65,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 软包电芯+磁铁环拆解复杂","value":2,"unit":"项"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 二合一设计底座增加拆解难度","value":1,"unit":"项"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 45 次才能抵消生产能耗","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 10000mAh 回本约 9 个月","value":9,"unit":"月"},
+        {"metric_type":"energy","text":"≈ 20W PD双向快充","value":20,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 底座充电即放即充","value":1,"unit":"项"},
+        {"metric_type":"energy","text":"≈ 多数人在 45 次前就换了","value":45,"unit":"次"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-p01ct",
+    "carbon_kg_co2eq": 15.6,
+    "carbon_industry_low": 9.4,
+    "carbon_industry_avg": 20.3,
+    "carbon_industry_high": 38.0,
+    "water_liters": 2110,
+    "water_industry_low": 1320,
+    "water_industry_avg": 3200,
+    "water_industry_high": 6400,
+    "cobalt_g": 13.6,
+    "nickel_g": 5.6,
+    "lithium_g": 3.2,
+    "manganese_g": 2.1,
+    "toxic_soil_dilution_tonnes": 6.1,
+    "cobalt_soil_dilution_tonnes": 6.1,
+    "nickel_soil_dilution_tonnes": 0.04,
+    "plastic_degradation_years": 450,
+    "aluminum_degradation_years": 300,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 50,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 42.2,
+    "ctue_recycle": 2.11,
+    "production_energy_mj": 23.3,
+    "energy_per_full_cycle_mj": 0.52,
+    "break_even_cycles": 45,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 62 公里（普通燃油车）","value":62,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 15.5 个月吸收的碳","value":15.5,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 3.1 顿火锅的碳排放","value":3.1,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 16%","value":16,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 830 小时","value":830,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 1055 天的饮水量","value":1055,"unit":"天"},
+        {"metric_type":"water","text":"≈ 13 次标准浴缸满水","value":13,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 5.3 公斤大米的用水量","value":5.3,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 84%","value":84,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 352 次","value":352,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 6.1 吨土壤稀释至安全标准","value":6.1,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 8 节 21700 电芯的金属总量","value":8,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 300W 旗舰级输出功率","value":300,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个小型公园","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 18 代孙辈还在等它消失","value":18,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 8 节 21700 钢壳电芯数百年降解","value":8,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ TFT大屏+无线充电线圈+风扇","value":3,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 铝合金电池壳数百年降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 50% 的材料可回收利用","value":50,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 8 节 21700 电芯含可回收金属","value":8,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 2C2A+无线+HUB 极高拆解难度","value":5,"unit":"口"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 45 次才能抵消生产能耗","value":45,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 40000mAh 回本约 1.5 年","value":1.5,"unit":"年"},
+        {"metric_type":"energy","text":"≈ 140W PD3.1 可为笔记本满速充电","value":140,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 内置风扇主动散热保障持续输出","value":1,"unit":"项"},
+        {"metric_type":"energy","text":"≈ 300W 可同时为 5 台设备供电","value":300,"unit":"W"}
+      ]
+    }
+  },
+  {
+    "product_id": "cuktech-ba651",
+    "carbon_kg_co2eq": 3.9,
+    "carbon_industry_low": 2.3,
+    "carbon_industry_avg": 5.1,
+    "carbon_industry_high": 9.5,
+    "water_liters": 260,
+    "water_industry_low": 160,
+    "water_industry_avg": 400,
+    "water_industry_high": 800,
+    "cobalt_g": 1.7,
+    "nickel_g": 0.7,
+    "lithium_g": 0.4,
+    "manganese_g": 0.3,
+    "toxic_soil_dilution_tonnes": 0.8,
+    "cobalt_soil_dilution_tonnes": 0.8,
+    "nickel_soil_dilution_tonnes": 0.004,
+    "plastic_degradation_years": 300,
+    "aluminum_degradation_years": 150,
+    "pcb_degradable": false,
+    "cell_degradation_years": 100,
+    "recyclable_pct": 40,
+    "recyclable_industry_avg": 32,
+    "recovery_rate": 0.95,
+    "carbon_disposal_landfill": 0.3,
+    "carbon_disposal_recycle": 0.15,
+    "water_disposal_landfill": 20,
+    "water_disposal_recycle": 10,
+    "ctue_landfill": 5.3,
+    "ctue_recycle": 0.27,
+    "production_energy_mj": 2.9,
+    "energy_per_full_cycle_mj": 0.06,
+    "break_even_cycles": 48,
+    "equivalences": {
+      "carbon": [
+        {"metric_type":"carbon","text":"≈ 驾车 16 公里（普通燃油车）","value":16,"unit":"公里"},
+        {"metric_type":"carbon","text":"≈ 一棵树生长 4 个月吸收的碳","value":4,"unit":"月"},
+        {"metric_type":"carbon","text":"≈ 0.8 顿火锅的碳排放","value":0.8,"unit":"顿"},
+        {"metric_type":"carbon","text":"≈ 一部手机生产碳排放的 4%","value":4,"unit":"%"},
+        {"metric_type":"carbon","text":"≈ 一盏 LED 灯照明 210 小时","value":210,"unit":"小时"}
+      ],
+      "water": [
+        {"metric_type":"water","text":"≈ 一个成年人 130 天的饮水量","value":130,"unit":"天"},
+        {"metric_type":"water","text":"≈ 1.6 次标准浴缸满水","value":1.6,"unit":"次"},
+        {"metric_type":"water","text":"≈ 种植 0.7 公斤大米的用水量","value":0.7,"unit":"公斤"},
+        {"metric_type":"water","text":"≈ 一件棉 T 恤生产用水的 10%","value":10,"unit":"%"},
+        {"metric_type":"water","text":"≈ 冲马桶 43 次","value":43,"unit":"次"}
+      ],
+      "toxic": [
+        {"metric_type":"toxic","text":"≈ 需要 0.8 吨土壤稀释至安全标准","value":0.8,"unit":"吨"},
+        {"metric_type":"toxic","text":"≈ 1 节 21700 电芯的金属总量","value":1,"unit":"节"},
+        {"metric_type":"toxic","text":"≈ 67W GaN二合一设计","value":67,"unit":"W"},
+        {"metric_type":"toxic","text":"≈ 足以污染一个停车位土壤","value":1,"unit":"个"},
+        {"metric_type":"toxic","text":"≈ 钴为主要土壤限制金属","value":1,"unit":"项"}
+      ],
+      "degrade": [
+        {"metric_type":"degrade","text":"≈ 第 12 代孙辈还在等它消失","value":12,"unit":"代"},
+        {"metric_type":"degrade","text":"≈ 1 节 21700 钢壳电芯数百年降解","value":1,"unit":"节"},
+        {"metric_type":"degrade","text":"≈ GaN+充电器电路数百年降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ PC+ABS外壳数百年降解","value":1,"unit":"项"},
+        {"metric_type":"degrade","text":"≈ 你后代的考古学家可能会挖到它","value":1,"unit":"永远"}
+      ],
+      "recycle": [
+        {"metric_type":"recycle","text":"≈ 60% 的材料最终进入填埋场","value":60,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 1 节 21700 电芯含可回收金属","value":1,"unit":"节"},
+        {"metric_type":"recycle","text":"≈ 全球仅 5% 锂电池被正规回收","value":5,"unit":"%"},
+        {"metric_type":"recycle","text":"≈ 二合一设计AC电路增加拆解难度","value":1,"unit":"项"},
+        {"metric_type":"recycle","text":"≈ 欧盟要求 2027 年达 50% 回收率","value":50,"unit":"%"}
+      ],
+      "energy": [
+        {"metric_type":"energy","text":"≈ 需充满 48 次才能抵消生产能耗","value":48,"unit":"次"},
+        {"metric_type":"energy","text":"≈ 5000mAh 回本约 5 个月","value":5,"unit":"月"},
+        {"metric_type":"energy","text":"≈ 67W GaN插墙即充","value":67,"unit":"W"},
+        {"metric_type":"energy","text":"≈ 充电器模式可无限使用","value":1,"unit":"项"},
+        {"metric_type":"energy","text":"≈ 多数人在 48 次前就换了","value":48,"unit":"次"}
+      ]
+    }
+  }
+]

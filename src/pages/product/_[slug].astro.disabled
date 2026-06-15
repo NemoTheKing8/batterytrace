@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Methodology from '../../components/Methodology.astro';
+import products from '../../data/products.json';
+import metricsData from '../../data/metrics.json';
+import brands from '../../data/brands.json';
+import type { Metrics } from '../../schemas.ts';
+
+export function getStaticPaths() {
+  return products.map(p => ({ params: { slug: p.id } }));
+}
+
+const { slug } = Astro.params;
+const product = products.find(p => p.id === slug);
+if (!product) return Astro.redirect('/');
+
+const brand = brands.find(b => b.id === product.brand_id);
+const m = metricsData.find(m => m.product_id === slug) as Metrics | undefined;
+if (!m) return Astro.redirect('/');
+
+const chemLabels: Record<string, string> = {
+  'LFP': '磷酸铁锂', 'NCM': '镍钴锰', 'LCO': '钴酸锂', 'Li-polymer': '锂聚合物', 'Li-ion': '锂离子'
+};
+
+const cardConfigs = [
+  { type: 'carbon' as const, value: m.carbon_kg_co2eq, unit: 'kg CO₂eq', subtitle: '生产+运输+废弃',
+    progressTarget: Math.round((m.carbon_kg_co2eq - m.carbon_industry_low) / (m.carbon_industry_high - m.carbon_industry_low) * 100),
+    progressLabels: [`行业最低：${m.carbon_industry_low} kg`, `行业平均：${m.carbon_industry_avg} kg`, `行业最高：${m.carbon_industry_high} kg`] },
+  { type: 'water' as const, value: m.water_liters, unit: 'L', subtitle: '锂提取+制造+回收',
+    progressTarget: Math.round((m.water_liters - m.water_industry_low) / (m.water_industry_high - m.water_industry_low) * 100),
+    progressLabels: [`行业最低：${m.water_industry_low} L`, `行业平均：${m.water_industry_avg} L`, `行业最高：${m.water_industry_high} L`] },
+  { type: 'toxic' as const, value: +(m.cobalt_g + m.nickel_g + m.lithium_g + m.manganese_g).toFixed(1), unit: 'g 总额', subtitle: 'Co+Ni+Li+Mn' },
+  { type: 'recycle' as const, value: m.recyclable_pct, unit: '%', subtitle: '取决于当地回收设施',
+    progressTarget: Math.round(m.recyclable_pct / 70 * 100),
+    progressLabels: ['0%', `行业平均：${m.recyclable_industry_avg}%`, '理想：>70%'] },
+];
+
+const configMap: Record<string, { label: string; icon: string; tooltip: string; colorClass: string; hasProgress: boolean }> = {
+  carbon: { label: '碳足迹 · 全生命周期', icon: '🌍', tooltip: '基于全生命周期评估(LCA)：原材料提取→制造→运输→废弃。排放因子来自Ecoinvent 3.10和GREET 2024。', colorClass: 'carbon', hasProgress: true },
+  water: { label: '水足迹 · 全生命周期', icon: '💧', tooltip: '包含锂提取、电池制造和回收三个阶段的耗水量。提锂水耗基于Flexer et al.(2018)文献平均值。', colorClass: 'water', hasProgress: true },
+  toxic: { label: '潜在有毒物质释放', icon: '☠️', tooltip: '金属含量基于典型正极材料组成。土壤稀释参考US EPA Regional Screening Levels。', colorClass: 'toxic', hasProgress: true },
+  recycle: { label: '可回收率', icon: '♻️', tooltip: '全球锂电池回收率~5%(Melin 2019)。38%为正规+非正规回收乐观估计。', colorClass: 'recycle', hasProgress: true },
+};
+---
+
+<BaseLayout
+  title={`${product.name} 环境代价`}
+  description={`${product.name}的全生命周期环境估算：碳足迹${m.carbon_kg_co2eq} kg CO₂eq，水足迹${m.water_liters} L，可回收率${m.recyclable_pct}%。基于学术文献的近似值。`}
+>
+  <Breadcrumb items={[
+    { label: '首页', href: '/' },
+    { label: brand?.name || product.brand_id, href: `/brand/${product.brand_id}` },
+    { label: product.name }
+  ]} />
+
+  <div class="page-container">
+    <!-- Product Header -->
+    <div class="product-header">
+      <div class="product-icon">🔋</div>
+      <div class="product-info">
+        <h1>{product.name}</h1>
+        <div class="product-specs">
+          <span>{product.capacity_mah.toLocaleString()} mAh</span>
+          <span>{chemLabels[product.chemistry] || product.chemistry}</span>
+          <span>{product.power_w}W USB-C</span>
+          <span>~{product.weight_g}g</span>
+          <span>约 ¥{product.price_cny}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer-bar">
+      <div class="disclaimer">
+        <strong>⚠ 估算数据，非品牌实测。</strong> 以下数字基于已发表文献中对应电池化学类型（{chemLabels[product.chemistry] || product.chemistry}）的平均排放因子计算。{brand?.name || '品牌'}未提供这些数据——这是我们根据同类产品的学术研究做出的最佳近似。
+      </div>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="metrics-grid">
+      {cardConfigs.map(card => {
+        const cfg = configMap[card.type];
+        const eqs = m.equivalences[card.type];
+        const defaultEq = eqs[0];
+        const eqJson = JSON.stringify(eqs);
+
+        return (
+          <div class="metric-card">
+            <div class="metric-label">
+              <span class="icon">{cfg.icon}</span>
+              <span>{cfg.label}</span>
+            </div>
+            <div class="info-tip" data-tip={cfg.tooltip}>ℹ</div>
+
+            <div class={`metric-value ${cfg.colorClass}`}>
+              {card.value.toLocaleString()}<span class="metric-unit"> {card.unit}<span class="unit-sep">|</span>{card.subtitle}</span>
+            </div>
+
+            <div class="equivalence-area" data-eqs={eqJson}>
+              <noscript>
+                <div class="eq-line"><span class="eq-dot"></span>{defaultEq.text}</div>
+              </noscript>
+              <div class="eq-content" id={`eq-${card.type}`}>
+                <div class="eq-line"><span class="eq-dot"></span>{defaultEq.text}</div>
+              </div>
+            </div>
+
+            {card.type === 'toxic' && (
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; font-size: 14px;">
+                <div>钴 (Co) <strong style="display:block;font-size:20px;">{m.cobalt_g} g</strong><span style="color:#777;">≈ 需要 {m.cobalt_soil_dilution_tonnes} 吨土壤稀释</span></div>
+                <div>镍 (Ni) <strong style="display:block;font-size:20px;">{m.nickel_g} g</strong><span style="color:#777;">≈ 需要 {m.nickel_soil_dilution_tonnes} 吨土壤稀释</span></div>
+                <div>锂 (Li) <strong style="display:block;font-size:20px;">{m.lithium_g} g</strong><span style="color:#777;">≈ 地下水迁移风险高</span></div>
+                {m.manganese_g > 0 && <div>锰 (Mn) <strong style="display:block;font-size:20px;">{m.manganese_g} g</strong></div>}
+              </div>
+            )}
+
+            {cfg.hasProgress && card.progressTarget !== undefined && (
+              <>
+                <div class="progress-bar">
+                  <div class={`progress-fill ${cfg.colorClass}`} style={`width: ${card.progressTarget}%`}></div>
+                </div>
+                <div class="progress-labels">
+                  {card.progressLabels?.map((l: string, i: number) => <span>{l}</span>)}
+                </div>
+              </>
+            )}
+
+            {card.type === 'toxic' && (
+              <>
+                <div class="progress-bar" style="margin-top:14px;">
+                  <div class="progress-fill toxic" style="width: 35%"></div>
+                </div>
+                <div class="progress-labels">
+                  <span>低毒性</span><span>中等</span><span>高毒性</span>
+                </div>
+              </>
+            )}
+
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Compare CTA -->
+    <div class="compare-cta">
+      <button class="compare-btn">+ 对比另一块充电宝（即将推出）</button>
+    </div>
+
+    <!-- Pinduoduo buy link -->
+    {product.purchase_url && (
+      <div style="text-align: center; margin-bottom: 20px;">
+        <a href={product.purchase_url} target="_blank" rel="noopener" class="buy-link">
+          🛒 在拼多多查看
+        </a>
+      </div>
+    )}
+
+    <!-- Back to list -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      <a href={`/brand/${product.brand_id}`} class="back-link">← 回到{chemLabels[product.chemistry] ? brand?.name : product.brand_id}所有产品</a>
+    </div>
+
+    <!-- Methodology -->
+    <Methodology />
+  </div>
+</BaseLayout>
+
+<script>
+  // Equivalence randomizer & progress bar animation
+  document.addEventListener('DOMContentLoaded', () => {
+    const types = ['carbon', 'water', 'toxic', 'recycle'];
+    types.forEach(type => {
+      const container = document.getElementById(`eq-${type}`);
+      if (!container) return;
+      const parent = container.parentElement;
+      if (!parent || !parent.dataset.eqs) return;
+      try {
+        const eqs = JSON.parse(parent.dataset.eqs);
+        if (!eqs.length) return;
+        const count = Math.random() > 0.5 ? 2 : 1;
+        const shuffled = [...eqs].sort(() => Math.random() - 0.5);
+        const selected = shuffled.slice(0, count);
+        container.innerHTML = selected.map((e: any) =>
+          `<div class="eq-line"><span class="eq-dot"></span>${e.text}</div>`
+        ).join('');
+      } catch {}
+    });
+
+    // Progress bar animation
+    document.querySelectorAll('.progress-fill').forEach((el) => {
+      const target = (el as HTMLElement).style.width;
+      (el as HTMLElement).style.width = '0';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          (el as HTMLElement).style.width = target;
+        });
+      });
+    });
+  });
+</script>

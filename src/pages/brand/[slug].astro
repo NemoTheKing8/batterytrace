@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+import brands from '../../data/brands.json';
+import products from '../../data/products.json';
+
+export function getStaticPaths() {
+  return brands.map(b => ({ params: { slug: b.id } }));
+}
+
+const { slug } = Astro.params;
+const brand = brands.find(b => b.id === slug);
+if (!brand) return Astro.redirect('/');
+
+const brandProducts = products
+  .filter(p => p.brand_id === slug)
+  .sort((a, b) => b.capacity_mah - a.capacity_mah);
+---
+
+<BaseLayout title={`${brand.name} 充电宝环境代价`} description={`查看${brand.name}全系列充电宝的全生命周期环境代价估算数据。`}>
+  <Breadcrumb items={[
+    { label: '首页', href: '/' },
+    { label: brand.name }
+  ]} />
+
+  <div class="page-container">
+    <h1 class="page-title">{brand.name} <span style="font-size:16px;color:var(--text-secondary);font-weight:400;">· 共 {brandProducts.length} 款产品</span></h1>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      {brandProducts.map(p => (
+        <div class="btn-product" style="display: flex; align-items: center; gap: 14px; padding: 16px; background: var(--card); border: 1px solid var(--border); border-radius: 10px;">
+          <div style="font-size: 28px;">🔋</div>
+          <div style="flex:1;">
+            <div style="font-size:16px;font-weight:600;">{p.name}</div>
+            <div style="font-size:13px;color:var(--text-secondary);">
+              {p.capacity_mah.toLocaleString()} mAh · {p.power_w}W · {p.weight_g}g · ¥{p.price_cny}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

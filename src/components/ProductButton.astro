@@ -1,0 +1,29 @@
+---
+export interface Props {
+  product: {
+    id: string;
+    name: string;
+    capacity_mah: number;
+    chemistry: string;
+    power_w: number;
+    price_cny: number;
+  };
+}
+const { product } = Astro.props;
+const chemLabels: Record<string, string> = {
+  'LFP': '磷酸铁锂',
+  'NCM': '镍钴锰',
+  'LCO': '钴酸锂',
+  'Li-polymer': '锂聚合物'
+};
+---
+<a href={`/product/${product.id}`} class="btn-product">
+  <span class="buy-icon">→</span>
+  <div class="product-name">{product.name}</div>
+  <div class="product-meta">
+    <span>{product.capacity_mah.toLocaleString()} mAh</span>
+    <span class="tag-chemistry">{chemLabels[product.chemistry] || product.chemistry}</span>
+    <span>{product.power_w}W</span>
+    <span class="tag-price">¥{product.price_cny}</span>
+  </div>
+</a>

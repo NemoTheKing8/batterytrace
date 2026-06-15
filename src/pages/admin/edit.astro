@@ -1,0 +1,410 @@
+---
+// Admin CRUD page — hidden, noindex
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import products from '../../data/products.json';
+import metricsData from '../../data/metrics.json';
+import brands from '../../data/brands.json';
+---
+
+<BaseLayout title="数据管理">
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+  <div class="admin-page">
+    <h1>🔧 数据管理</h1>
+
+    <!-- Product list -->
+    <div id="product-list">
+      <button class="btn-primary" id="btn-add">+ 新增产品</button>
+      <table class="admin-table">
+        <thead>
+          <tr><th>产品名</th><th>容量</th><th>化学类型</th><th>价格</th><th>在产</th><th>操作</th></tr>
+        </thead>
+        <tbody id="product-table-body">
+          <!-- JS-populated -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Form -->
+    <div class="admin-form" id="admin-form">
+      <h2 id="form-title">新增产品</h2>
+
+      <div class="form-section">
+        <h3>规格信息</h3>
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>产品名称</label>
+            <input type="text" id="f-name" placeholder="如：酷态科 20000mAh 快充版" />
+          </div>
+          <div class="form-group">
+            <label>产品 ID (slug)</label>
+            <input type="text" id="f-id" placeholder="如：cuktech-20000mah-50w" />
+          </div>
+          <div class="form-group">
+            <label>品牌</label>
+            <select id="f-brand">
+              {brands.map(b => <option value={b.id}>{b.name}</option>)}
+            </select>
+          </div>
+          <div class="form-group">
+            <label>容量 (mAh)</label>
+            <input type="number" id="f-capacity" />
+          </div>
+          <div class="form-group">
+            <label>电池化学类型</label>
+            <select id="f-chemistry">
+              <option value="Li-polymer">Li-polymer (锂聚合物)</option>
+              <option value="LFP">LFP (磷酸铁锂)</option>
+              <option value="NCM">NCM (镍钴锰)</option>
+              <option value="LCO">LCO (钴酸锂)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>功率 (W)</label>
+            <input type="number" id="f-power" step="0.1" />
+          </div>
+          <div class="form-group">
+            <label>重量 (g)</label>
+            <input type="number" id="f-weight" />
+          </div>
+          <div class="form-group">
+            <label>价格 (¥)</label>
+            <input type="number" id="f-price" />
+          </div>
+          <div class="form-group">
+            <label>拼多多链接</label>
+            <input type="url" id="f-url" placeholder="https://..." />
+          </div>
+          <div class="form-group">
+            <label>产品图片</label>
+            <input type="text" id="f-image" placeholder="/images/cuktech-型号.png" />
+          </div>
+          <div class="form-group">
+            <label>在产</label>
+            <select id="f-active"><option value="1">是</option><option value="0">否</option></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>环境指标 — 碳足迹 🌍</h3>
+        <div class="form-grid">
+          <div class="form-group"><label>碳足迹 (kg CO₂eq)</label><input type="number" id="f-carbon" step="0.1" /></div>
+          <div class="form-group"><label>行业最低 (kg)</label><input type="number" id="f-carbon-low" step="0.1" /></div>
+          <div class="form-group"><label>行业平均 (kg)</label><input type="number" id="f-carbon-avg" step="0.1" /></div>
+          <div class="form-group"><label>行业最高 (kg)</label><input type="number" id="f-carbon-high" step="0.1" /></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>环境指标 — 水足迹 💧</h3>
+        <div class="form-grid">
+          <div class="form-group"><label>水足迹 (L)</label><input type="number" id="f-water" /></div>
+          <div class="form-group"><label>行业最低 (L)</label><input type="number" id="f-water-low" /></div>
+          <div class="form-group"><label>行业平均 (L)</label><input type="number" id="f-water-avg" /></div>
+          <div class="form-group"><label>行业最高 (L)</label><input type="number" id="f-water-high" /></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>环境指标 — 有毒物质 ☠️</h3>
+        <div class="form-grid">
+          <div class="form-group"><label>钴 (g)</label><input type="number" id="f-cobalt" step="0.1" /></div>
+          <div class="form-group"><label>镍 (g)</label><input type="number" id="f-nickel" step="0.1" /></div>
+          <div class="form-group"><label>锂 (g)</label><input type="number" id="f-lithium" step="0.1" /></div>
+          <div class="form-group"><label>锰 (g)</label><input type="number" id="f-manganese" step="0.1" /></div>
+          <div class="form-group"><label>总稀释需土壤 (吨)</label><input type="number" id="f-toxic-soil" step="0.1" /></div>
+          <div class="form-group"><label>钴稀释需土壤 (吨)</label><input type="number" id="f-cobalt-soil" step="0.1" /></div>
+          <div class="form-group"><label>镍稀释需土壤 (吨)</label><input type="number" id="f-nickel-soil" step="0.1" /></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>环境指标 — 降解时间 ⏳</h3>
+        <div class="form-grid">
+          <div class="form-group"><label>塑料外壳 (年)</label><input type="number" id="f-plastic-yrs" /></div>
+          <div class="form-group"><label>铝合金 (年)</label><input type="number" id="f-aluminum-yrs" /></div>
+          <div class="form-group"><label>电芯 (年)</label><input type="number" id="f-cell-yrs" /></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>环境指标 — 可回收率 ♻️</h3>
+        <div class="form-grid">
+          <div class="form-group"><label>可回收率 (%)</label><input type="number" id="f-recycle-pct" /></div>
+          <div class="form-group"><label>行业平均 (%)</label><input type="number" id="f-recycle-avg" /></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>环境指标 — 能量回收 ⚡</h3>
+        <div class="form-grid">
+          <div class="form-group"><label>生产能耗 (MJ)</label><input type="number" id="f-energy-prod" /></div>
+          <div class="form-group"><label>单次循环能量 (MJ)</label><input type="number" id="f-energy-cycle" step="0.01" /></div>
+          <div class="form-group"><label>回本循环次数</label><input type="number" id="f-energy-even" /></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>等价类比（每种 5 条，用逗号分隔）</h3>
+        <div class="form-grid">
+          <div class="form-group full"><label>碳 🌍 (5条，逗号分隔)</label><textarea id="f-eq-carbon" rows="3"></textarea></div>
+          <div class="form-group full"><label>水 💧 (5条，逗号分隔)</label><textarea id="f-eq-water" rows="3"></textarea></div>
+          <div class="form-group full"><label>毒性 ☠️ (5条，逗号分隔)</label><textarea id="f-eq-toxic" rows="3"></textarea></div>
+          <div class="form-group full"><label>降解 ⏳ (5条，逗号分隔)</label><textarea id="f-eq-degrade" rows="3"></textarea></div>
+          <div class="form-group full"><label>回收 ♻️ (5条，逗号分隔)</label><textarea id="f-eq-recycle" rows="3"></textarea></div>
+          <div class="form-group full"><label>能量 ⚡ (5条，逗号分隔)</label><textarea id="f-eq-energy" rows="3"></textarea></div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-primary" id="btn-save">💾 保存到 GitHub</button>
+        <button class="btn-secondary" id="btn-cancel">取消</button>
+      </div>
+
+      <div class="save-status" id="save-status"></div>
+
+      <details class="json-backup" id="json-backup">
+        <summary>📋 手动备份 JSON（自动保存失败时使用）</summary>
+        <pre id="json-backup-content"></pre>
+      </details>
+    </div>
+  </div>
+</BaseLayout>
+
+<div id="admin-data" data-products={JSON.stringify(products)} data-metrics={JSON.stringify(metricsData)} style="display:none"></div>
+<script>
+  // Read initial data from server-rendered data attributes
+  const adminData = document.getElementById('admin-data')!;
+  const initialProducts = JSON.parse(adminData.dataset.products || '[]');
+  const initialMetrics = JSON.parse(adminData.dataset.metrics || '[]');
+
+  let state = {
+    mode: 'list', editingId: null,
+    products: JSON.parse(JSON.stringify(initialProducts)),
+    metrics: JSON.parse(JSON.stringify(initialMetrics)),
+  };
+
+  function el(id: string) { return document.getElementById(id) as HTMLElement; }
+
+  function renderList() {
+    const tbody = el('product-table-body');
+    tbody.innerHTML = state.products.map((p: any) => `
+      <tr>
+        <td><strong>${p.name}</strong></td>
+        <td>${p.capacity_mah.toLocaleString()} mAh</td>
+        <td>${p.chemistry}</td>
+        <td>¥${p.price_cny}</td>
+        <td>${p.in_production ? '✅' : '❌'}</td>
+        <td>
+          <button class="btn-sm" data-edit="${p.id}">编辑</button>
+          <button class="btn-sm danger" data-delete="${p.id}">删除</button>
+        </td>
+      </tr>
+    `).join('');
+
+    tbody.querySelectorAll('[data-edit]').forEach(btn =>
+      btn.addEventListener('click', () => editProduct((btn as HTMLElement).dataset.edit!)));
+    tbody.querySelectorAll('[data-delete]').forEach(btn =>
+      btn.addEventListener('click', () => deleteProduct((btn as HTMLElement).dataset.delete!)));
+  }
+
+  function editProduct(id: string) {
+    state.mode = 'edit'; state.editingId = id;
+    const p = state.products.find((p: any) => p.id === id);
+    const m = state.metrics.find((m: any) => m.product_id === id);
+    if (!p || !m) return;
+    (el('form-title') as HTMLElement).textContent = `编辑：${p.name}`;
+    el('admin-form').classList.add('active');
+    (el('f-name') as HTMLInputElement).value = p.name;
+    (el('f-id') as HTMLInputElement).value = p.id; (el('f-id') as HTMLInputElement).disabled = true;
+    (el('f-brand') as HTMLSelectElement).value = p.brand_id;
+    (el('f-capacity') as HTMLInputElement).value = String(p.capacity_mah);
+    (el('f-chemistry') as HTMLSelectElement).value = p.chemistry;
+    (el('f-power') as HTMLInputElement).value = String(p.power_w);
+    (el('f-weight') as HTMLInputElement).value = String(p.weight_g);
+    (el('f-price') as HTMLInputElement).value = String(p.price_cny);
+    (el('f-url') as HTMLInputElement).value = p.purchase_url;
+    (el('f-image') as HTMLInputElement).value = p.image;
+    (el('f-active') as HTMLSelectElement).value = p.in_production ? '1' : '0';
+    // Metrics
+    (el('f-carbon') as HTMLInputElement).value = String(m.carbon_kg_co2eq);
+    (el('f-carbon-low') as HTMLInputElement).value = String(m.carbon_industry_low);
+    (el('f-carbon-avg') as HTMLInputElement).value = String(m.carbon_industry_avg);
+    (el('f-carbon-high') as HTMLInputElement).value = String(m.carbon_industry_high);
+    (el('f-water') as HTMLInputElement).value = String(m.water_liters);
+    (el('f-water-low') as HTMLInputElement).value = String(m.water_industry_low);
+    (el('f-water-avg') as HTMLInputElement).value = String(m.water_industry_avg);
+    (el('f-water-high') as HTMLInputElement).value = String(m.water_industry_high);
+    (el('f-cobalt') as HTMLInputElement).value = String(m.cobalt_g);
+    (el('f-nickel') as HTMLInputElement).value = String(m.nickel_g);
+    (el('f-lithium') as HTMLInputElement).value = String(m.lithium_g);
+    (el('f-manganese') as HTMLInputElement).value = String(m.manganese_g);
+    (el('f-toxic-soil') as HTMLInputElement).value = String(m.toxic_soil_dilution_tonnes);
+    (el('f-cobalt-soil') as HTMLInputElement).value = String(m.cobalt_soil_dilution_tonnes);
+    (el('f-nickel-soil') as HTMLInputElement).value = String(m.nickel_soil_dilution_tonnes);
+    (el('f-plastic-yrs') as HTMLInputElement).value = String(m.plastic_degradation_years);
+    (el('f-aluminum-yrs') as HTMLInputElement).value = String(m.aluminum_degradation_years);
+    (el('f-cell-yrs') as HTMLInputElement).value = String(m.cell_degradation_years);
+    (el('f-recycle-pct') as HTMLInputElement).value = String(m.recyclable_pct);
+    (el('f-recycle-avg') as HTMLInputElement).value = String(m.recyclable_industry_avg);
+    (el('f-energy-prod') as HTMLInputElement).value = String(m.production_energy_mj);
+    (el('f-energy-cycle') as HTMLInputElement).value = String(m.energy_per_full_cycle_mj);
+    (el('f-energy-even') as HTMLInputElement).value = String(m.break_even_cycles);
+    // Equivalences
+    (el('f-eq-carbon') as HTMLTextAreaElement).value = m.equivalences.carbon.map((e: any) => e.text).join('；');
+    (el('f-eq-water') as HTMLTextAreaElement).value = m.equivalences.water.map((e: any) => e.text).join('；');
+    (el('f-eq-toxic') as HTMLTextAreaElement).value = m.equivalences.toxic.map((e: any) => e.text).join('；');
+    (el('f-eq-degrade') as HTMLTextAreaElement).value = m.equivalences.degrade.map((e: any) => e.text).join('；');
+    (el('f-eq-recycle') as HTMLTextAreaElement).value = m.equivalences.recycle.map((e: any) => e.text).join('；');
+    (el('f-eq-energy') as HTMLTextAreaElement).value = m.equivalences.energy.map((e: any) => e.text).join('；');
+  }
+
+  function deleteProduct(id: string) {
+    if (!confirm(`确定删除产品 "${id}"？此操作不可撤销。`)) return;
+    state.products = state.products.filter((p: any) => p.id !== id);
+    state.metrics = state.metrics.filter((m: any) => m.product_id !== id);
+    renderList();
+  }
+
+  function resetForm() {
+    state.mode = 'list'; state.editingId = null;
+    el('admin-form').classList.remove('active');
+    el('save-status').classList.remove('saved', 'error', 'saving');
+    (el('save-status') as HTMLElement).style.display = 'none';
+    el('json-backup').removeAttribute('open');
+  }
+
+  async function saveToGitHub() {
+    const statusEl = el('save-status') as HTMLElement;
+    statusEl.className = 'save-status saving';
+    statusEl.textContent = '⏳ 正在保存...';
+    statusEl.style.display = 'block';
+
+    try {
+      const res = await fetch('/api/commit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ products: state.products, metrics: state.metrics })
+      });
+      const data = await res.json();
+      if (data.success) {
+        statusEl.className = 'save-status saved';
+        statusEl.textContent = `✅ ${data.message}`;
+        renderList();
+        resetForm();
+      } else {
+        statusEl.className = 'save-status error';
+        statusEl.textContent = `❌ ${data.error}`;
+        showBackup();
+      }
+    } catch (e: any) {
+      statusEl.className = 'save-status error';
+      statusEl.textContent = `❌ 网络错误：${e.message}。请使用下方手动备份。`;
+      showBackup();
+    }
+  }
+
+  function showBackup() {
+    const backup = JSON.stringify({ products: state.products, metrics: state.metrics }, null, 2);
+    (el('json-backup-content') as HTMLElement).textContent = backup;
+    el('json-backup').setAttribute('open', '');
+  }
+
+  function addProduct() {
+    state.mode = 'add'; state.editingId = null;
+    (el('form-title') as HTMLElement).textContent = '新增产品';
+    el('admin-form').classList.add('active');
+    (el('f-id') as HTMLInputElement).disabled = false;
+    // Clear all fields
+    el('admin-form').querySelectorAll('input, textarea, select').forEach((f: any) => {
+      if (f.tagName === 'SELECT') f.selectedIndex = 0;
+      else if (f.type === 'checkbox') f.checked = false;
+      else f.value = '';
+    });
+  }
+
+  // Read form → build product + metrics objects
+  function readForm(): { product: any; metrics: any } | null {
+    try {
+      const parseEq = (text: string, metricType: string) =>
+        text.split(/[；;]/).filter(Boolean).map((t: string) => ({
+          metric_type: metricType, text: t.trim(), value: 0, unit: ''
+        }));
+      const id = (el('f-id') as HTMLInputElement).value.trim();
+      if (!id) { alert('产品 ID 不能为空'); return null; }
+      return {
+        product: {
+          id,
+          brand_id: (el('f-brand') as HTMLSelectElement).value,
+          name: (el('f-name') as HTMLInputElement).value.trim(),
+          capacity_mah: Number((el('f-capacity') as HTMLInputElement).value),
+          chemistry: (el('f-chemistry') as HTMLSelectElement).value,
+          power_w: Number((el('f-power') as HTMLInputElement).value),
+          weight_g: Number((el('f-weight') as HTMLInputElement).value),
+          price_cny: Number((el('f-price') as HTMLInputElement).value),
+          purchase_url: (el('f-url') as HTMLInputElement).value.trim(),
+          image: (el('f-image') as HTMLInputElement).value.trim(),
+          in_production: (el('f-active') as HTMLSelectElement).value === '1',
+        },
+        metrics: {
+          product_id: id,
+          carbon_kg_co2eq: Number((el('f-carbon') as HTMLInputElement).value),
+          carbon_industry_low: Number((el('f-carbon-low') as HTMLInputElement).value),
+          carbon_industry_avg: Number((el('f-carbon-avg') as HTMLInputElement).value),
+          carbon_industry_high: Number((el('f-carbon-high') as HTMLInputElement).value),
+          water_liters: Number((el('f-water') as HTMLInputElement).value),
+          water_industry_low: Number((el('f-water-low') as HTMLInputElement).value),
+          water_industry_avg: Number((el('f-water-avg') as HTMLInputElement).value),
+          water_industry_high: Number((el('f-water-high') as HTMLInputElement).value),
+          cobalt_g: Number((el('f-cobalt') as HTMLInputElement).value),
+          nickel_g: Number((el('f-nickel') as HTMLInputElement).value),
+          lithium_g: Number((el('f-lithium') as HTMLInputElement).value),
+          manganese_g: Number((el('f-manganese') as HTMLInputElement).value),
+          toxic_soil_dilution_tonnes: Number((el('f-toxic-soil') as HTMLInputElement).value),
+          cobalt_soil_dilution_tonnes: Number((el('f-cobalt-soil') as HTMLInputElement).value),
+          nickel_soil_dilution_tonnes: Number((el('f-nickel-soil') as HTMLInputElement).value),
+          plastic_degradation_years: Number((el('f-plastic-yrs') as HTMLInputElement).value),
+          aluminum_degradation_years: Number((el('f-aluminum-yrs') as HTMLInputElement).value),
+          pcb_degradable: false,
+          cell_degradation_years: Number((el('f-cell-yrs') as HTMLInputElement).value),
+          recyclable_pct: Number((el('f-recycle-pct') as HTMLInputElement).value),
+          recyclable_industry_avg: Number((el('f-recycle-avg') as HTMLInputElement).value),
+          production_energy_mj: Number((el('f-energy-prod') as HTMLInputElement).value),
+          energy_per_full_cycle_mj: Number((el('f-energy-cycle') as HTMLInputElement).value),
+          break_even_cycles: Number((el('f-energy-even') as HTMLInputElement).value),
+          equivalences: {
+            carbon: parseEq((el('f-eq-carbon') as HTMLTextAreaElement).value, 'carbon'),
+            water: parseEq((el('f-eq-water') as HTMLTextAreaElement).value, 'water'),
+            toxic: parseEq((el('f-eq-toxic') as HTMLTextAreaElement).value, 'toxic'),
+            degrade: parseEq((el('f-eq-degrade') as HTMLTextAreaElement).value, 'degrade'),
+            recycle: parseEq((el('f-eq-recycle') as HTMLTextAreaElement).value, 'recycle'),
+            energy: parseEq((el('f-eq-energy') as HTMLTextAreaElement).value, 'energy'),
+          }
+        }
+      };
+    } catch (e: any) {
+      alert(`表单数据有误：${e.message}`); return null;
+    }
+  }
+
+  // Event listeners
+  el('btn-add').addEventListener('click', addProduct);
+  el('btn-cancel').addEventListener('click', resetForm);
+  el('btn-save').addEventListener('click', () => {
+    const data = readForm();
+    if (!data) return;
+    if (state.mode === 'add') {
+      state.products.push(data.product);
+      state.metrics.push(data.metrics);
+    } else {
+      const idx = state.products.findIndex((p: any) => p.id === state.editingId);
+      if (idx >= 0) state.products[idx] = data.product;
+      const midx = state.metrics.findIndex((m: any) => m.product_id === state.editingId);
+      if (midx >= 0) state.metrics[midx] = data.metrics;
+    }
+    saveToGitHub();
+  });
+
+  // Init
+  renderList();
+</script>
