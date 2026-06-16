@@ -1,11 +1,10 @@
 import { defineConfig } from 'astro/config';
-import fs from 'node:fs';
 import { validateAll } from './src/schemas.ts';
+import productsData from './src/data/products.json' with { type: 'json' };
+import metricsData from './src/data/metrics.json' with { type: 'json' };
+import brandsData from './src/data/brands.json' with { type: 'json' };
 
-// Build-time data validation (wrapped for Vercel compatibility)
-const brandsData = JSON.parse(fs.readFileSync('./src/data/brands.json', 'utf-8'));
-const productsData = JSON.parse(fs.readFileSync('./src/data/products.json', 'utf-8'));
-const metricsData = JSON.parse(fs.readFileSync('./src/data/metrics.json', 'utf-8'));
+// Build-time data validation
 const result = validateAll(brandsData, productsData, metricsData);
 if (!result.ok) {
   console.error('❌ Data validation failed:');
@@ -17,4 +16,7 @@ console.log('✓ Data validated successfully');
 export default defineConfig({
   output: 'static',
   site: 'https://batterytrace.org',
+  image: {
+    service: { entrypoint: 'astro/assets/services/sharp' }
+  }
 });

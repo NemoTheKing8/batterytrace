@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Reference — Methodology & Citations" description="batterytrace environmental data — calculation methods, model assumptions, and academic references">
+  <meta slot="head" name="robots" content="index, follow" />
+
+  <div class="page-container">
+    <h1 class="page-title">Reference</h1>
+    <p class="page-subtitle">Calculation methods, model assumptions, and citations for all environmental metrics aforementioned.</p>
+
+    <!-- Carbon -->
+    <section class="ref-section">
+      <h2>Carbon Footprint</h2>
+      <div class="ref-formula">
+        <code>CO₂eq = E(kWh) × emission factor (kg CO₂eq/kWh) + enclosure/PCB/assembly + transport + disposal</code>
+      </div>
+      <table class="ref-table">
+        <tr><th>Stage</th><th>Factor</th><th>Source</th></tr>
+        <tr><td>Cell production</td><td>E(kWh) × 90 kg CO₂eq/kWh</td><td>Peters et al. (2017); GREET 2024</td></tr>
+        <tr><td>Enclosure + PCB + assembly</td><td>≈ 1.8 kg CO₂eq</td><td>Ecoinvent 3.10 small electronics module</td></tr>
+        <tr><td>Transport</td><td>≈ 0.5 kg CO₂eq</td><td>Shenzhen → global, primarily sea freight</td></tr>
+        <tr><td>Disposal — landfill</td><td>+0.3 kg CO₂eq</td><td>Landfill methane + transport</td></tr>
+        <tr><td>Disposal — recycle</td><td>+0.15 kg CO₂eq</td><td>Recycling process energy</td></tr>
+      </table>
+      <div class="ref-citations">
+        <h3>References</h3>
+        <ol>
+          <li>Peters, J. F., Baumann, M., Zimmermann, B., Braun, J., & Weil, M. (2017). The environmental impact of Li-Ion batteries and the role of key parameters – A review. <em>Renewable and Sustainable Energy Reviews</em>, 67, 491–506. <a href="https://doi.org/10.1016/j.rser.2016.08.038" target="_blank">DOI</a></li>
+          <li>GREET Model 2024. Argonne National Laboratory, U.S. Department of Energy. <a href="https://greet.es.anl.gov/" target="_blank">greet.es.anl.gov</a></li>
+          <li>Wernet, G., et al. (2016). The ecoinvent database: overview and methodology. <em>The International Journal of Life Cycle Assessment</em>, 21(9), 1218–1230. <a href="https://ecoinvent.org/" target="_blank">ecoinvent.org</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Water -->
+    <section class="ref-section">
+      <h2>Water Footprint</h2>
+      <div class="ref-formula">
+        <code>Water use = E(kWh) × 14,500 L/kWh + disposal</code>
+      </div>
+      <table class="ref-table">
+        <tr><th>Stage</th><th>Share</th><th>Source</th></tr>
+        <tr><td>Lithium extraction (brine evaporation)</td><td>≈ 60%</td><td>Flexer et al. (2018)</td></tr>
+        <tr><td>Cathode material production (NCM)</td><td>≈ 25%</td><td>Stamp et al. (2012)</td></tr>
+        <tr><td>Cell manufacturing</td><td>≈ 15%</td><td>Dai et al. (2019)</td></tr>
+        <tr><td>Disposal — landfill</td><td>+20 L</td><td>Leachate water use</td></tr>
+        <tr><td>Disposal — recycle</td><td>+10 L</td><td>Recycling process water</td></tr>
+      </table>
+      <div class="ref-citations">
+        <h3>References</h3>
+        <ol start="4">
+          <li>Flexer, V., Baspineiro, C. F., & Galli, C. I. (2018). Lithium recovery from brines: A vital raw material for green energies with a potential environmental impact in its mining and processing. <em>Science of the Total Environment</em>, 639, 1188–1204. <a href="https://doi.org/10.1016/j.scitotenv.2018.05.223" target="_blank">DOI</a></li>
+          <li>Stamp, A., Lang, D. J., & Wäger, P. A. (2012). Environmental impacts of a transition toward e-mobility: the present and future role of lithium carbonate production. <em>Journal of Cleaner Production</em>, 23(1), 104–112. <a href="https://doi.org/10.1016/j.jclepro.2011.10.026" target="_blank">DOI</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Toxic Metals -->
+    <section class="ref-section">
+      <h2>Toxic Metals (Co, Li, Ni, Mn)</h2>
+      <div class="ref-formula">
+        <code>Metal mass (g) = cathode mass per cell × stoichiometric mass fraction × cell count</code>
+      </div>
+      <table class="ref-table">
+        <tr><th>Parameter</th><th>Value</th><th>Notes</th></tr>
+        <tr><td>Single 18650 cell weight</td><td>~45 g</td><td>Typical consumer 18650</td></tr>
+        <tr><td>Cathode material share</td><td>~35%</td><td>Cathode / cell weight ratio</td></tr>
+        <tr><td>Chemistry</td><td>NCM (111)</td><td>Co:Ni:Mn ≈ 1:1:1 molar ratio</td></tr>
+        <tr><td>Co / cell (18650)</td><td>≈ 1.0 g</td><td>Stoichiometric fraction</td></tr>
+        <tr><td>Co / cell (21700)</td><td>≈ 1.7 g</td><td>Scaled by capacity (5 Ah vs 2.5 Ah)</td></tr>
+        <tr><td>Li / cell (18650)</td><td>≈ 0.25 g</td><td>Li(NiCoMn)O₂ stoichiometry</td></tr>
+        <tr><td>Ni / cell (18650)</td><td>≈ 0.4 g</td><td>Stoichiometric fraction</td></tr>
+        <tr><td>Mn / cell (18650)</td><td>≈ 0.15 g</td><td>Stoichiometric fraction</td></tr>
+      </table>
+      <div class="ref-citations">
+        <h3>References</h3>
+        <ol start="6">
+          <li>Majeau-Bettez, G., Hawkins, T. R., & Strømman, A. H. (2011). Life cycle environmental assessment of lithium-ion and nickel metal hydride batteries for plug-in hybrid vehicles. <em>Environmental Science & Technology</em>, 45(10), 4548–4554. <a href="https://doi.org/10.1021/es103607c" target="_blank">DOI</a></li>
+          <li>Dunn, J. B., Gaines, L., Kelly, J. C., James, C., & Gallagher, K. G. (2015). The significance of Li-ion batteries in electric vehicle life-cycle energy and emissions. <em>Energy & Environmental Science</em>, 8, 158–168. <a href="https://doi.org/10.1039/C4EE03029J" target="_blank">DOI</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Soil Dilution -->
+    <section class="ref-section">
+      <h2>Soil Dilution Baseline</h2>
+      <div class="ref-formula">
+        <code>Soil required (tonnes) = Σ(metal mass (g) / RSL (mg/kg)) / 1000</code>
+      </div>
+      <table class="ref-table">
+        <tr><th>Metal</th><th>RSL (mg/kg)</th><th>Source</th></tr>
+        <tr><td>Co (cobalt)</td><td>23</td><td>US EPA RSL residential soil</td></tr>
+        <tr><td>Ni (nickel)</td><td>1600</td><td>US EPA RSL residential soil</td></tr>
+      </table>
+      <div class="ref-citations">
+        <h3>References</h3>
+        <ol start="8">
+          <li>US EPA. (2024). Regional Screening Levels (RSLs) – Generic Tables. <a href="https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables" target="_blank">epa.gov</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CTUe -->
+    <section class="ref-section">
+      <h2>Ecotoxicity (CTUe)</h2>
+      <div class="ref-formula">
+        <code>CTUe = Σ(metal mass (g) × CF<sub>USEtox</sub>) / 1000</code>
+      </div>
+      <table class="ref-table">
+        <tr><th>Metal</th><th>CF (CTUe/kg)</th><th>Source</th></tr>
+        <tr><td>Co (cobalt)</td><td>2360</td><td>USEtox 2.12</td></tr>
+        <tr><td>Ni (nickel)</td><td>1760</td><td>USEtox 2.12</td></tr>
+        <tr><td>Mn (manganese)</td><td>115</td><td>USEtox 2.12</td></tr>
+        <tr><td>Li (lithium)</td><td>0.085</td><td>USEtox 2.12</td></tr>
+      </table>
+      <p class="ref-note">CTUe (Comparative Toxic Unit for ecosystems) is defined by the USEtox 2.12 model. 1 CTUe ≈ the freshwater ecotoxicity impact per m³ of water. The goldfish tank analogy uses a standard 40 L aquarium.</p>
+      <div class="ref-citations">
+        <h3>References</h3>
+        <ol start="9">
+          <li>Rosenbaum, R. K., et al. (2008). USEtox—the UNEP-SETAC toxicity model: recommended characterisation factors for human toxicity and freshwater ecotoxicity in life cycle impact assessment. <em>The International Journal of Life Cycle Assessment</em>, 13, 532–546. <a href="https://doi.org/10.1007/s11367-008-0038-4" target="_blank">DOI</a></li>
+          <li>USEtox 2.12 Model. <a href="https://usetox.org/" target="_blank">usetox.org</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Recycling -->
+    <section class="ref-section">
+      <h2>Recycling & Disposal Scenarios</h2>
+      <h3>Dual-Scenario Model</h3>
+      <table class="ref-table">
+        <tr><th>Scenario</th><th>Assumption</th><th>Metal release</th><th>Carbon disposal</th></tr>
+        <tr><td>Scenario 1 — Sorted recycling</td><td>95% metal recovery rate (Harper et al. 2019)</td><td>Original × 5%</td><td>+0.15 kg CO₂eq</td></tr>
+        <tr><td>Scenario 2 — Landfill/litter</td><td>100% metals enter environment</td><td>Original × 100%</td><td>+0.3 kg CO₂eq</td></tr>
+      </table>
+      <h3>Global Li-ion Battery Recycling Status</h3>
+      <p>Formal recycling rate: ~5%. Informal dismantling (mainly Asia) contributes an additional ~33%, totaling ~38%. Industry average is ~32%. Pouch cells are more difficult to recycle than cylindrical cells due to high aluminum-plastic film separation costs.</p>
+      <div class="ref-citations">
+        <h3>References</h3>
+        <ol start="11">
+          <li>Harper, G., Sommerville, R., Kendrick, E., et al. (2019). Recycling lithium-ion batteries from electric vehicles. <em>Nature</em>, 575, 75–86. <a href="https://doi.org/10.1038/s41586-019-1682-5" target="_blank">DOI</a></li>
+          <li>Melin, H. E. (2019). State-of-the-art in reuse and recycling of lithium-ion batteries – A review. Circular Energy Storage. <a href="https://circularenergystorage.com/reports" target="_blank">circularenergystorage.com</a></li>
+          <li>Chen, M., et al. (2019). Recycling end-of-life electric vehicle lithium-ion batteries. <em>Joule</em>, 3(11), 2622–2646. <a href="https://doi.org/10.1016/j.joule.2019.09.014" target="_blank">DOI</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Limitations -->
+    <section class="ref-section">
+      <h2>Limitations</h2>
+      <ol class="ref-limits">
+        <li>All figures represent literature averages for the stated battery chemistry, not brand-specific measurements.</li>
+        <li>Actual environmental impact varies significantly by factory, supply chain, usage patterns, and disposal pathway.</li>
+        <li>Metal content is estimated from cathode stoichiometry; trace metals in anode, electrolyte, and binder are not included.</li>
+        <li>Soil dilution is a worst-case conservative estimate (assumes all metals migrate in soluble form); actual fate depends on landfill hydrogeology.</li>
+        <li>CTUe measures freshwater ecotoxicity, not direct human toxicity; real-world toxicity depends on exposure pathways and bioavailability.</li>
+        <li>Product BOM (bill of materials) data is sourced from publicly available teardown reports by <a href="https://www.chongdiantou.com/" target="_blank">chongdiantou.com</a> and reviews by <a href="https://space.bilibili.com/310268345" target="_blank">阿甘体验</a> on Bilibili.</li>
+        <li>These numbers are not intended to provide precise data.</li>
+      </ol>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .ref-section {
+    margin-bottom: 40px;
+  }
+
+  .ref-section h2 {
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .ref-section h3 {
+    font-size: 15px;
+    color: #aaa;
+    margin: 16px 0 8px;
+  }
+
+  .ref-formula {
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+  }
+
+  .ref-formula code {
+    font-size: 14px;
+    color: #2dd4bf;
+    word-break: break-all;
+  }
+
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .ref-table th, .ref-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .ref-table th {
+    color: #888;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .ref-table td {
+    color: #ccc;
+  }
+
+  .ref-citations {
+    font-size: 13px;
+    color: #888;
+  }
+
+  .ref-citations ol {
+    margin: 8px 0;
+    padding-left: 20px;
+  }
+
+  .ref-citations li {
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+
+  .ref-citations a {
+    color: #22c55e;
+    text-decoration: none;
+  }
+
+  .ref-citations a:hover {
+    text-decoration: underline;
+  }
+
+  .ref-limits a {
+    color: #22c55e;
+    text-decoration: none;
+  }
+
+  .ref-limits a:hover {
+    text-decoration: underline;
+  }
+
+  .ref-note {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .ref-limits {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.8;
+    padding-left: 20px;
+  }
+
+  .ref-limits li {
+    margin-bottom: 4px;
+  }
+</style>

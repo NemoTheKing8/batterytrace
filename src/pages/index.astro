@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Methodology from '../components/Methodology.astro';
+
 import products from '../data/products.json';
 import metricsData from '../data/metrics.json';
 import brands from '../data/brands.json';
@@ -270,7 +270,7 @@ const brand = brands[0]; // Cuktech is the only brand for V1
         <div class="calc-divider"></div>
 
         <!-- Scenario 2: Landfill -->
-        <div class="calc-scenario-label">🗑 随地乱丢</div>
+        <div class="calc-scenario-label">随地乱丢</div>
         <div class="calc-row">
           <div class="calc-item">
             <div class="calc-value" id="sum-co-landfill">0</div>
@@ -302,7 +302,7 @@ const brand = brands[0]; // Cuktech is the only brand for V1
         </div>
 
         <!-- Scenario 1: Recycle -->
-        <div class="calc-scenario-label">♻️ 分类回收</div>
+        <div class="calc-scenario-label">分类回收</div>
         <div class="calc-row">
           <div class="calc-item">
             <div class="calc-value recycled" id="sum-co-recycle">0</div>
@@ -341,7 +341,6 @@ const brand = brands[0]; // Cuktech is the only brand for V1
     <!-- ═══ Brand Section (一级窗口) ═══ -->
     <section class="brand-section">
       <div class="brand-section-header">
-        <span class="brand-section-icon">🔋</span>
         <h2 class="brand-section-title">{brand.name} <span class="brand-section-en">{brand.name_en}</span></h2>
       </div>
 
@@ -375,9 +374,9 @@ const brand = brands[0]; // Cuktech is the only brand for V1
                 <div class="ps-card-name">{item.product.name}</div>
                 <div class="ps-card-specs">{item.product.capacity_mah.toLocaleString()}mAh · {item.product.power_w}W · {item.product.weight_g}g · ¥{item.product.price_cny}</div>
                 <div class="ps-card-pills">
-                  <span class="ps-pill carbon">🟤 碳 {item.metrics.carbon_kg_co2eq} kg</span>
-                  <span class="ps-pill water">💧 水 {item.metrics.water_liters} L</span>
-                  <span class="ps-pill metal">🪙 金属 {(item.metrics.cobalt_g + item.metrics.nickel_g + item.metrics.lithium_g + item.metrics.manganese_g).toFixed(1)}g</span>
+                  <span class="ps-pill carbon">碳 {item.metrics.carbon_kg_co2eq} kg</span>
+                  <span class="ps-pill water">水 {item.metrics.water_liters} L</span>
+                  <span class="ps-pill metal">金属 {(item.metrics.cobalt_g + item.metrics.nickel_g + item.metrics.lithium_g + item.metrics.manganese_g).toFixed(1)}g</span>
                 </div>
               </div>
               <button class="ps-learn-btn" type="button" data-bom={JSON.stringify(productBom[item.product.id] || [])} data-name={item.product.name}>
@@ -392,11 +391,13 @@ const brand = brands[0]; // Cuktech is the only brand for V1
     <!-- Disclaimer -->
     <div class="disclaimer-bar" style="margin-top: 32px;">
       <div class="disclaimer">
-        <strong>⚠ 估算数据，非品牌实测。</strong> 以上数字基于已发表学术文献及充电头网拆解报告中对电芯型号、材料的分析做出的最佳近似。酷态科未提供或认可这些数据。组件污染来源信息基于拆解报告的物料清单推断。
+        <strong>估算数据，非品牌实测。</strong> 以上数字基于已发表学术文献及充电头网拆解报告中对电芯型号、材料的分析做出的最佳近似。酷态科未提供或认可这些数据。组件污染来源信息基于拆解报告的物料清单推断。
       </div>
     </div>
 
-    <Methodology />
+    <div class="methodology">
+      <a href="/reference" class="ref-link">Data sources, methods & references →</a>
+    </div>
 
     <!-- Full-screen modal for 了解更多 -->
     <div class="modal-overlay" id="learn-modal" hidden>
