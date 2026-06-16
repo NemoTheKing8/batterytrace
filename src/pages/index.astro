@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import products from '../data/products.json';
 import metricsData from '../data/metrics.json';
 import brands from '../data/brands.json';
+import heroBg from '../images/cuktech-revised.png';
 
 const catalog = products.map(p => {
   const m = metricsData.find(m => m.product_id === p.id);
@@ -252,85 +253,110 @@ const productBom: Record<string, { cat: string; fn: string; brand: string; spec:
 const brand = brands[0]; // Cuktech is the only brand for V1
 ---
 
-<BaseLayout title="充电宝污染计算器" description="选择酷态科充电宝产品，查看环境代价总和。">
+<BaseLayout title="充电宝环境影响计算器" description="选择酷态科充电宝产品，估算从制造到废弃的金属流失、碳足迹与生态毒性。">
 
-  <!-- ═══ Calculator Summary (top) ═══ -->
+  <!-- ═══ Hero + Calculator ═══ -->
   <div class="calc-hero">
+    <div class="hero-bg">
+      <img src={heroBg.src} alt="" />
+    </div>
     <div class="calc-hero-inner">
-      <h1 class="calc-hero-title">充电宝污染计算器</h1>
-      <p class="calc-hero-sub">勾选产品，查看它们加在一起的环境代价</p>
-      <div class="calc-panel" id="calc-panel">
-        <div class="calc-selected-header">
-          <span>已选商品</span>
-          <span class="calc-selected-count" id="calc-status">尚未选择</span>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1 class="calc-hero-title">充电宝环境影响计算器</h1>
+          <p class="calc-hero-sub">选择产品，查看从制造到废弃产生的金属流失、碳足迹与生态毒性影响。</p>
+          <div class="hero-actions">
+            <a href="#product-list" class="hero-cta">开始选择产品</a>
+            <a href="/reference" class="hero-cta-secondary">查看计算依据</a>
+          </div>
         </div>
-        <div class="calc-selected-list" id="selected-items">
-          <div class="calc-empty-hint">在下方勾选产品，它们会出现在这里</div>
-        </div>
-        <div class="calc-divider"></div>
-
-        <!-- Scenario 2: Landfill -->
-        <div class="calc-scenario-label">随地乱丢</div>
-        <div class="calc-row">
-          <div class="calc-item">
-            <div class="calc-value" id="sum-co-landfill">0</div>
-            <div class="calc-label">钴 Co (g)</div>
+        <div class="calc-panel" id="calc-panel">
+          <div class="calc-selected-header">
+            <span>已选商品</span>
+            <span class="calc-selected-count" id="calc-status">尚未选择</span>
           </div>
-          <div class="calc-item">
-            <div class="calc-value" id="sum-li-landfill">0</div>
-            <div class="calc-label">锂 Li (g)</div>
-          </div>
-          <div class="calc-item">
-            <div class="calc-value" id="sum-ni-landfill">0</div>
-            <div class="calc-label">镍 Ni (g)</div>
-          </div>
-          <div class="calc-item">
-            <div class="calc-value" id="sum-mn-landfill">0</div>
-            <div class="calc-label">锰 Mn (g)</div>
-          </div>
-          <div class="calc-item primary">
-            <div class="calc-value" id="sum-carbon">0</div>
-            <div class="calc-label">碳足迹 (kg CO₂eq)</div>
-          </div>
-          <div class="calc-item primary">
-            <div class="calc-value" id="sum-ctue">0</div>
-            <div class="calc-label ctue-label">
-              生态毒性 CTUe
-              <span class="ctue-tooltip">≈ <span id="goldfish-count">0</span> 个金鱼缸 (40L) 稀释至无害</span>
+          <div class="calc-selected-list" id="selected-items">
+            <div class="calc-empty-state" id="calc-empty">
+              <div class="calc-empty-icon">0</div>
+              <div class="calc-empty-title">请选择充电宝产品</div>
+              <div class="calc-empty-desc">勾选下方产品后，将在此处显示未规范回收与规范回收两种情景的环境影响估算结果。</div>
             </div>
           </div>
-        </div>
-
-        <!-- Scenario 1: Recycle -->
-        <div class="calc-scenario-label">分类回收</div>
-        <div class="calc-row">
-          <div class="calc-item">
-            <div class="calc-value recycled" id="sum-co-recycle">0</div>
-            <div class="calc-label">钴 Co (g)</div>
+          <div id="calc-results" style="display:none;">
+            <div class="calc-divider" style="margin-top:0;"></div>
+            <div class="scenario-cards">
+              <!-- Landfill -->
+              <div class="scenario-card landfill">
+                <div class="scenario-card-title">未规范回收</div>
+                <div class="calc-row-inner">
+                  <div class="calc-item-small">
+                    <div class="calc-value" id="sum-co-landfill">0</div>
+                    <div class="calc-label">钴 Co (g)</div>
+                  </div>
+                  <div class="calc-item-small">
+                    <div class="calc-value" id="sum-li-landfill">0</div>
+                    <div class="calc-label">锂 Li (g)</div>
+                  </div>
+                  <div class="calc-item-small">
+                    <div class="calc-value" id="sum-ni-landfill">0</div>
+                    <div class="calc-label">镍 Ni (g)</div>
+                  </div>
+                  <div class="calc-item-small">
+                    <div class="calc-value" id="sum-mn-landfill">0</div>
+                    <div class="calc-label">锰 Mn (g)</div>
+                  </div>
+                </div>
+                <div class="calc-row-inner primary-row">
+                  <div class="calc-item-small primary">
+                    <div class="calc-value" id="sum-carbon">0</div>
+                    <div class="calc-label">碳足迹 (kg CO₂eq)</div>
+                  </div>
+                  <div class="calc-item-small primary">
+                    <div class="calc-value" id="sum-ctue">0</div>
+                    <div class="calc-label ctue-label">
+                      生态毒性 CTUe
+                      <span class="ctue-tooltip">≈ <span id="goldfish-count">0</span> 个金鱼缸 (40L)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Recycle -->
+              <div class="scenario-card recycle">
+                <div class="scenario-card-title">规范回收</div>
+                <div class="calc-row-inner">
+                  <div class="calc-item-small">
+                    <div class="calc-value recycled" id="sum-co-recycle">0</div>
+                    <div class="calc-label">钴 Co (g)</div>
+                  </div>
+                  <div class="calc-item-small">
+                    <div class="calc-value recycled" id="sum-li-recycle">0</div>
+                    <div class="calc-label">锂 Li (g)</div>
+                  </div>
+                  <div class="calc-item-small">
+                    <div class="calc-value recycled" id="sum-ni-recycle">0</div>
+                    <div class="calc-label">镍 Ni (g)</div>
+                  </div>
+                  <div class="calc-item-small">
+                    <div class="calc-value recycled" id="sum-mn-recycle">0</div>
+                    <div class="calc-label">锰 Mn (g)</div>
+                  </div>
+                </div>
+                <div class="calc-row-inner primary-row">
+                  <div class="calc-item-small primary">
+                    <div class="calc-value" id="sum-carbon-r">0</div>
+                    <div class="calc-label">碳足迹 (kg CO₂eq)</div>
+                  </div>
+                  <div class="calc-item-small primary">
+                    <div class="calc-value" id="sum-ctue-r">0</div>
+                    <div class="calc-label">生态毒性 CTUe</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="calc-total-bar" id="calc-total-bar" style="display:none;">
+              <button class="calc-clear-btn" id="calc-clear">清空全部</button>
+            </div>
           </div>
-          <div class="calc-item">
-            <div class="calc-value recycled" id="sum-li-recycle">0</div>
-            <div class="calc-label">锂 Li (g)</div>
-          </div>
-          <div class="calc-item">
-            <div class="calc-value recycled" id="sum-ni-recycle">0</div>
-            <div class="calc-label">镍 Ni (g)</div>
-          </div>
-          <div class="calc-item">
-            <div class="calc-value recycled" id="sum-mn-recycle">0</div>
-            <div class="calc-label">锰 Mn (g)</div>
-          </div>
-          <div class="calc-item primary">
-            <div class="calc-value" id="sum-carbon-r">0</div>
-            <div class="calc-label">碳足迹 (kg CO₂eq)</div>
-          </div>
-          <div class="calc-item primary">
-            <div class="calc-value" id="sum-ctue-r">0</div>
-            <div class="calc-label">生态毒性 CTUe</div>
-          </div>
-        </div>
-        <div class="calc-total-bar" id="calc-total-bar" style="display:none;">
-          <button class="calc-clear-btn" id="calc-clear">清空全部</button>
         </div>
       </div>
     </div>
@@ -413,38 +439,204 @@ const brand = brands[0]; // Cuktech is the only brand for V1
 </BaseLayout>
 
 <style>
-  /* ── Calculator Hero ── */
-  .calc-hero {
-    background: linear-gradient(180deg, #0d0d0d 0%, #111 100%);
-    border-bottom: 1px solid #222;
-    padding: 40px 0 32px;
-    backdrop-filter: blur(8px);
+  /* ── Global Glow ── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 700px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(45,212,191,0.09) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
   }
 
+  /* ── Hero ── */
+  .calc-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0 60px;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 60% 30%, rgba(45,212,191,0.12) 0%, transparent 50%),
+      linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.85) 60%, #0a0a0a 100%);
+  }
   .calc-hero-inner {
-    max-width: 960px;
+    position: relative;
+    z-index: 1;
+    max-width: 1040px;
     margin: 0 auto;
     padding: 0 24px;
+    width: 100%;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
   }
 
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
   .calc-hero-title {
-    font-size: 28px;
+    font-size: 48px;
     font-weight: 700;
-    margin: 0 0 4px;
-    color: var(--text);
+    line-height: 1.1;
+    margin: 0;
+    color: #fff;
+    letter-spacing: -0.02em;
   }
-
   .calc-hero-sub {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin: 0 0 20px;
+    font-size: 17px;
+    color: #999;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 420px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .hero-cta {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: #000;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: filter 0.2s;
+  }
+  .hero-cta:hover { filter: brightness(1.15); }
+  .hero-cta-secondary {
+    display: inline-block;
+    padding: 14px 28px;
+    background: rgba(255,255,255,0.06);
+    color: #ccc;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .hero-cta-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    color: #fff;
   }
 
   .calc-panel {
-    background: #161616;
-    border: 1px solid #2a2a2a;
+    background: rgba(18,22,24,0.75);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  }
+
+  /* ── Empty State ── */
+  .calc-empty-state {
+    text-align: center;
+    padding: 28px 16px 20px;
+    color: #666;
+  }
+  .calc-empty-icon {
+    font-size: 40px;
+    font-weight: 300;
+    color: #444;
+    margin-bottom: 12px;
+  }
+  .calc-empty-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 6px;
+  }
+  .calc-empty-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  /* ── Scenario Cards ── */
+  .scenario-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .scenario-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
     border-radius: 12px;
-    padding: 20px 24px;
+    padding: 16px;
+  }
+  .scenario-card.landfill { border-left: 3px solid rgba(244,114,82,0.6); }
+  .scenario-card.recycle { border-left: 3px solid rgba(45,212,191,0.6); }
+  .scenario-card-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+    color: #999;
+  }
+  .scenario-card.landfill .scenario-card-title { color: #f4907c; }
+  .scenario-card.recycle .scenario-card-title { color: #2dd4bf; }
+
+  .calc-row-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .calc-row-inner.primary-row {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 0;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .calc-item-small .calc-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .calc-item-small.primary .calc-value { color: var(--accent); }
+  .calc-item-small .calc-value.recycled { color: #2dd4bf; }
+  .calc-item-small .calc-label {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-top: 2px;
   }
 
   .calc-row {
@@ -718,13 +910,25 @@ const brand = brands[0]; // Cuktech is the only brand for V1
     border: 2px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, transform 0.25s, box-shadow 0.25s;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   }
+  .ps-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.55);
+  }
+  .ps-card:nth-child(6n+1) { z-index: 5; }
+  .ps-card:nth-child(6n+2) { z-index: 4; }
+  .ps-card:nth-child(6n+3) { z-index: 3; }
+  .ps-card:nth-child(6n+4) { z-index: 2; }
+  .ps-card:nth-child(6n+5) { z-index: 1; }
+  .ps-card:nth-child(6n+6) { z-index: 0; }
 
   .ps-card:has(.ps-checkbox:checked) {
     border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent), 0 12px 32px rgba(0,0,0,0.5);
   }
 
   /* ── Image button ── */
@@ -1049,30 +1253,58 @@ const brand = brands[0]; // Cuktech is the only brand for V1
   }
 
   /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .calc-hero {
+      padding: 40px 0 36px;
+      min-height: auto;
+    }
+    .calc-hero-title {
+      font-size: 36px;
+    }
+    .hero-text {
+      text-align: center;
+      align-items: center;
+    }
+    .calc-hero-sub {
+      max-width: 100%;
+    }
+    .scenario-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media (max-width: 680px) {
     .product-select-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
-    .calc-row {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .calc-value {
-      font-size: 22px;
-    }
-
     .calc-hero {
-      padding: 24px 0 20px;
+      padding: 32px 0 24px;
     }
 
     .calc-hero-title {
-      font-size: 22px;
+      font-size: 28px;
     }
 
-    .ps-learn-grid {
+    .calc-hero-sub {
+      font-size: 14px;
+    }
+
+    .hero-cta, .hero-cta-secondary {
+      padding: 12px 20px;
+      font-size: 14px;
+    }
+
+    .calc-row-inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .calc-value {
       grid-template-columns: 1fr;
     }
 
@@ -1134,14 +1366,21 @@ const brand = brands[0]; // Cuktech is the only brand for V1
       });
     });
 
+    const calcEmpty = document.getElementById('calc-empty')!;
+    const calcResults = document.getElementById('calc-results')!;
+
     function render() {
       if (selected.size === 0) {
-        selectedList.innerHTML = '<div class="calc-empty-hint">在下方勾选产品，它们会出现在这里</div>';
+        selectedList.innerHTML = '';
         calcStatus.textContent = '尚未选择';
         calcTotalBar.style.display = 'none';
+        calcEmpty.style.display = '';
+        calcResults.style.display = 'none';
       } else {
         calcStatus.textContent = `${selected.size} 款`;
         calcTotalBar.style.display = 'flex';
+        calcEmpty.style.display = 'none';
+        calcResults.style.display = '';
         let html = '';
         selected.forEach((qty, id) => {
           const m = productMeta.get(id);
