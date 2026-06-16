@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import products from '../data/products.json';
 import metricsData from '../data/metrics.json';
 import brands from '../data/brands.json';
-import heroBg from '../images/cuktech-revised.png';
+import heroBg from '../images/cuktech-bg.jpg';
 
 const catalog = products.map(p => {
   const m = metricsData.find(m => m.product_id === p.id);
@@ -264,10 +264,9 @@ const brand = brands[0]; // Cuktech is the only brand for V1
       <div class="hero-grid">
         <div class="hero-text">
           <h1 class="calc-hero-title">充电宝环境影响计算器</h1>
-          <p class="calc-hero-sub">选择产品，查看从制造到废弃产生的金属流失、碳足迹与生态毒性影响。</p>
+          <p class="calc-hero-sub">选择具体型号，估算电池材料流失、碳排放与生态毒性影响，对比规范回收前后的差异。</p>
           <div class="hero-actions">
-            <a href="#product-list" class="hero-cta">开始选择产品</a>
-            <a href="/reference" class="hero-cta-secondary">查看计算依据</a>
+            <a href="#power-banks" class="hero-cta">选择产品开始计算</a>
           </div>
         </div>
         <div class="calc-panel" id="calc-panel">
@@ -277,9 +276,8 @@ const brand = brands[0]; // Cuktech is the only brand for V1
           </div>
           <div class="calc-selected-list" id="selected-items">
             <div class="calc-empty-state" id="calc-empty">
-              <div class="calc-empty-icon">0</div>
-              <div class="calc-empty-title">请选择充电宝产品</div>
-              <div class="calc-empty-desc">勾选下方产品后，将在此处显示未规范回收与规范回收两种情景的环境影响估算结果。</div>
+              <div class="calc-empty-title">尚未选择产品</div>
+              <div class="calc-empty-desc">在下方产品网格中点击任意产品即可开始。</div>
             </div>
           </div>
           <div id="calc-results" style="display:none;">
@@ -288,24 +286,6 @@ const brand = brands[0]; // Cuktech is the only brand for V1
               <!-- Landfill -->
               <div class="scenario-card landfill">
                 <div class="scenario-card-title">未规范回收</div>
-                <div class="calc-row-inner">
-                  <div class="calc-item-small">
-                    <div class="calc-value" id="sum-co-landfill">0</div>
-                    <div class="calc-label">钴 Co (g)</div>
-                  </div>
-                  <div class="calc-item-small">
-                    <div class="calc-value" id="sum-li-landfill">0</div>
-                    <div class="calc-label">锂 Li (g)</div>
-                  </div>
-                  <div class="calc-item-small">
-                    <div class="calc-value" id="sum-ni-landfill">0</div>
-                    <div class="calc-label">镍 Ni (g)</div>
-                  </div>
-                  <div class="calc-item-small">
-                    <div class="calc-value" id="sum-mn-landfill">0</div>
-                    <div class="calc-label">锰 Mn (g)</div>
-                  </div>
-                </div>
                 <div class="calc-row-inner primary-row">
                   <div class="calc-item-small primary">
                     <div class="calc-value" id="sum-carbon">0</div>
@@ -319,28 +299,30 @@ const brand = brands[0]; // Cuktech is the only brand for V1
                     </div>
                   </div>
                 </div>
+                <div class="metal-detail" id="metal-detail-landfill" style="display:none;">
+                  <div class="calc-row-inner">
+                    <div class="calc-item-small">
+                      <div class="calc-value" id="sum-co-landfill">0</div>
+                      <div class="calc-label">钴 Co (g)</div>
+                    </div>
+                    <div class="calc-item-small">
+                      <div class="calc-value" id="sum-li-landfill">0</div>
+                      <div class="calc-label">锂 Li (g)</div>
+                    </div>
+                    <div class="calc-item-small">
+                      <div class="calc-value" id="sum-ni-landfill">0</div>
+                      <div class="calc-label">镍 Ni (g)</div>
+                    </div>
+                    <div class="calc-item-small">
+                      <div class="calc-value" id="sum-mn-landfill">0</div>
+                      <div class="calc-label">锰 Mn (g)</div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <!-- Recycle -->
               <div class="scenario-card recycle">
                 <div class="scenario-card-title">规范回收</div>
-                <div class="calc-row-inner">
-                  <div class="calc-item-small">
-                    <div class="calc-value recycled" id="sum-co-recycle">0</div>
-                    <div class="calc-label">钴 Co (g)</div>
-                  </div>
-                  <div class="calc-item-small">
-                    <div class="calc-value recycled" id="sum-li-recycle">0</div>
-                    <div class="calc-label">锂 Li (g)</div>
-                  </div>
-                  <div class="calc-item-small">
-                    <div class="calc-value recycled" id="sum-ni-recycle">0</div>
-                    <div class="calc-label">镍 Ni (g)</div>
-                  </div>
-                  <div class="calc-item-small">
-                    <div class="calc-value recycled" id="sum-mn-recycle">0</div>
-                    <div class="calc-label">锰 Mn (g)</div>
-                  </div>
-                </div>
                 <div class="calc-row-inner primary-row">
                   <div class="calc-item-small primary">
                     <div class="calc-value" id="sum-carbon-r">0</div>
@@ -351,10 +333,31 @@ const brand = brands[0]; // Cuktech is the only brand for V1
                     <div class="calc-label">生态毒性 CTUe</div>
                   </div>
                 </div>
+                <div class="metal-detail" id="metal-detail-recycle" style="display:none;">
+                  <div class="calc-row-inner">
+                    <div class="calc-item-small">
+                      <div class="calc-value recycled" id="sum-co-recycle">0</div>
+                      <div class="calc-label">钴 Co (g)</div>
+                    </div>
+                    <div class="calc-item-small">
+                      <div class="calc-value recycled" id="sum-li-recycle">0</div>
+                      <div class="calc-label">锂 Li (g)</div>
+                    </div>
+                    <div class="calc-item-small">
+                      <div class="calc-value recycled" id="sum-ni-recycle">0</div>
+                      <div class="calc-label">镍 Ni (g)</div>
+                    </div>
+                    <div class="calc-item-small">
+                      <div class="calc-value recycled" id="sum-mn-recycle">0</div>
+                      <div class="calc-label">锰 Mn (g)</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+            <button class="metal-toggle" id="metal-toggle" style="display:none;">查看材料明细</button>
             <div class="calc-total-bar" id="calc-total-bar" style="display:none;">
-              <button class="calc-clear-btn" id="calc-clear">清空全部</button>
+              <button class="calc-clear-btn" id="calc-clear">清空</button>
             </div>
           </div>
         </div>
@@ -371,44 +374,37 @@ const brand = brands[0]; // Cuktech is the only brand for V1
       </div>
 
       <!-- Product selection cards -->
-      <div class="product-select-grid" id="product-list">
+      <div class="product-select-grid" id="product-list" id="power-banks">
         {catalog.map((item, i) => {
+          const metalTotal = (item.metrics.cobalt_g + item.metrics.nickel_g + item.metrics.lithium_g + item.metrics.manganese_g).toFixed(1);
           return (
-            <div class="ps-card" data-index={i}>
-              <label class="ps-image-btn">
-                <input type="checkbox" class="ps-checkbox" value={item.product.id}
-                  data-co={item.metrics.cobalt_g}
-                  data-li={item.metrics.lithium_g}
-                  data-ni={item.metrics.nickel_g}
-                  data-mn={item.metrics.manganese_g}
-                  data-carbon={item.metrics.carbon_kg_co2eq}
-                  data-water={item.metrics.water_liters}
-                  data-recovery={item.metrics.recovery_rate ?? 0.95}
-                  data-carbon-lf={item.metrics.carbon_disposal_landfill ?? 0.3}
-                  data-carbon-rc={item.metrics.carbon_disposal_recycle ?? 0.15}
-                  data-water-lf={item.metrics.water_disposal_landfill ?? 20}
-                  data-water-rc={item.metrics.water_disposal_recycle ?? 10}
-                  data-ctue-lf={item.metrics.ctue_landfill ?? 6.2}
-                  data-ctue-rc={item.metrics.ctue_recycle ?? 0.31}
-                />
-                <div class="ps-img-box">
-                  <img src={item.product.image} alt={item.product.name} class="ps-img" loading="lazy" />
-                  <div class="ps-check-badge">✓</div>
-                </div>
-              </label>
-              <div class="ps-card-info">
-                <div class="ps-card-name">{item.product.name}</div>
-                <div class="ps-card-specs">{item.product.capacity_mah.toLocaleString()}mAh · {item.product.power_w}W · {item.product.weight_g}g · ¥{item.product.price_cny}</div>
-                <div class="ps-card-pills">
-                  <span class="ps-pill carbon">碳 {item.metrics.carbon_kg_co2eq} kg</span>
-                  <span class="ps-pill water">水 {item.metrics.water_liters} L</span>
-                  <span class="ps-pill metal">金属 {(item.metrics.cobalt_g + item.metrics.nickel_g + item.metrics.lithium_g + item.metrics.manganese_g).toFixed(1)}g</span>
-                </div>
+            <article class="product-card" data-id={item.product.id}
+              data-co={item.metrics.cobalt_g}
+              data-li={item.metrics.lithium_g}
+              data-ni={item.metrics.nickel_g}
+              data-mn={item.metrics.manganese_g}
+              data-carbon={item.metrics.carbon_kg_co2eq}
+              data-water={item.metrics.water_liters}
+              data-recovery={item.metrics.recovery_rate ?? 0.95}
+              data-carbon-lf={item.metrics.carbon_disposal_landfill ?? 0.3}
+              data-carbon-rc={item.metrics.carbon_disposal_recycle ?? 0.15}
+              data-water-lf={item.metrics.water_disposal_landfill ?? 20}
+              data-water-rc={item.metrics.water_disposal_recycle ?? 10}
+              data-ctue-lf={item.metrics.ctue_landfill ?? 6.2}
+              data-ctue-rc={item.metrics.ctue_recycle ?? 0.31}
+              data-name={item.product.name}
+              data-specs={`${item.product.capacity_mah.toLocaleString()}mAh · ${item.product.power_w}W · ${item.product.weight_g}g`}
+              data-bom={JSON.stringify(productBom[item.product.id] || [])}>
+              <div class="product-image-wrap">
+                <img src={item.product.image} alt={item.product.name} class="product-img" loading="lazy" />
+                <span class="selected-mark">✓</span>
               </div>
-              <button class="ps-learn-btn" type="button" data-bom={JSON.stringify(productBom[item.product.id] || [])} data-name={item.product.name}>
-                物料清单 ▸
-              </button>
-            </div>
+              <div class="product-card-info">
+                <h3 class="product-card-name">{item.product.name}</h3>
+                <p class="product-card-specs">{item.product.capacity_mah.toLocaleString()}mAh · {item.product.power_w}W · {item.product.weight_g}g · ¥{item.product.price_cny}</p>
+                <span class="carbon-note">{item.metrics.carbon_kg_co2eq} kg CO₂eq</span>
+              </div>
+            </article>
           );
         })}
       </div>
@@ -446,9 +442,9 @@ const brand = brands[0]; // Cuktech is the only brand for V1
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 1000px;
-    height: 700px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(45,212,191,0.09) 0%, transparent 60%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(45,212,191,0.04) 0%, transparent 65%);
     pointer-events: none;
     z-index: 0;
   }
@@ -465,7 +461,7 @@ const brand = brands[0]; // Cuktech is the only brand for V1
   .hero-bg {
     position: absolute;
     inset: 0;
-    opacity: 0.18;
+    opacity: 0.12;
   }
   .hero-bg img {
     width: 100%;
@@ -476,9 +472,7 @@ const brand = brands[0]; // Cuktech is the only brand for V1
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse at 60% 30%, rgba(45,212,191,0.12) 0%, transparent 50%),
-      linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.85) 60%, #0a0a0a 100%);
+    background: linear-gradient(180deg, rgba(6,8,9,0.5) 0%, rgba(6,8,9,0.9) 60%, #060809 100%);
   }
   .calc-hero-inner {
     position: relative;
@@ -501,19 +495,19 @@ const brand = brands[0]; // Cuktech is the only brand for V1
     gap: 16px;
   }
   .calc-hero-title {
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1.1;
+    font-size: clamp(38px, 4vw, 54px);
+    font-weight: 760;
+    line-height: 1.08;
     margin: 0;
     color: #fff;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
   .calc-hero-sub {
-    font-size: 17px;
-    color: #999;
+    font-size: 16px;
+    color: rgba(255,255,255,0.58);
     margin: 0;
-    line-height: 1.6;
-    max-width: 420px;
+    line-height: 1.7;
+    max-width: 440px;
   }
   .hero-actions {
     display: flex;
@@ -524,41 +518,48 @@ const brand = brands[0]; // Cuktech is the only brand for V1
   .hero-cta {
     display: inline-block;
     padding: 14px 28px;
-    background: var(--accent);
-    color: #000;
-    border-radius: 8px;
+    background: #00b98b;
+    color: #03110d;
+    border-radius: 10px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-    transition: filter 0.2s;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: none;
   }
-  .hero-cta:hover { filter: brightness(1.15); }
+  .hero-cta:hover {
+    background: #00c896;
+    transform: translateY(-1px);
+  }
   .hero-cta-secondary {
     display: inline-block;
     padding: 14px 28px;
-    background: rgba(255,255,255,0.06);
-    color: #ccc;
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.7);
     border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;
-    transition: background 0.2s, border-color 0.2s;
+    transition: background 0.2s;
   }
   .hero-cta-secondary:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.2);
-    color: #fff;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.9);
   }
 
   .calc-panel {
-    background: rgba(18,22,24,0.75);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    background: rgba(12,16,17,0.78);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 16px;
     padding: 24px;
-    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    box-shadow: 0 28px 90px rgba(0,0,0,0.48);
+    max-height: min(78vh, 760px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   /* ── Empty State ── */
@@ -743,8 +744,18 @@ const brand = brands[0]; // Cuktech is the only brand for V1
   .calc-selected-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0;
     min-height: 0;
+    max-height: 168px;
+    overflow-y: auto;
+    padding-right: 4px;
+    margin-top: 8px;
+  }
+
+  .calc-selected-list::-webkit-scrollbar { width: 4px; }
+  .calc-selected-list::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 99px;
   }
 
   .calc-empty-hint {
@@ -754,88 +765,7 @@ const brand = brands[0]; // Cuktech is the only brand for V1
     padding: 16px 0;
   }
 
-  .calc-sel-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #111;
-    border: 1px solid #222;
-    border-radius: 8px;
-    padding: 8px 12px;
-  }
-
-  .calc-sel-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    flex: 1;
-    min-width: 0;
-  }
-
-  .calc-sel-qty {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    flex-shrink: 0;
-  }
-
-  .calc-sel-qty button {
-    width: 34px;
-    height: 34px;
-    border: 1px solid #444;
-    background: #1a1a1a;
-    color: #ccc;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
-  }
-
-  .calc-sel-qty button:first-child {
-    border-radius: 8px 0 0 8px;
-  }
-
-  .calc-sel-qty button:last-child {
-    border-radius: 0 8px 8px 0;
-  }
-
-  .calc-sel-qty button:hover {
-    background: #2a2a2a;
-    border-color: #666;
-  }
-
-  .calc-sel-qty-val {
-    width: 42px;
-    height: 34px;
-    border-top: 1px solid #444;
-    border-bottom: 1px solid #444;
-    border-left: none;
-    border-right: none;
-    background: #0d0d0d;
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .calc-sel-remove {
-    background: none;
-    border: none;
-    color: #555;
-    cursor: pointer;
-    font-size: 20px;
-    padding: 4px 6px;
-    flex-shrink: 0;
-    transition: color 0.15s;
-    line-height: 1;
-  }
-
-  .calc-sel-remove:hover {
-    color: var(--accent-danger);
-  }
+  /* selected-item styles are in global.css (must hit dynamic DOM) */
 
   .calc-divider {
     height: 1px;
@@ -1316,11 +1246,12 @@ const brand = brands[0]; // Cuktech is the only brand for V1
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const checkboxes = document.querySelectorAll('.ps-checkbox') as NodeListOf<HTMLInputElement>;
+    const productCards = document.querySelectorAll('.product-card') as NodeListOf<HTMLElement>;
     const selectedList = document.getElementById('selected-items')!;
     const calcStatus = document.getElementById('calc-status')!;
     const calcTotalBar = document.getElementById('calc-total-bar')!;
     const clearBtn = document.getElementById('calc-clear')!;
+    const metalToggle = document.getElementById('metal-toggle')!;
 
     // Totals elements — landfill
     const sumCoL = document.getElementById('sum-co-landfill')!;
@@ -1332,37 +1263,42 @@ const brand = brands[0]; // Cuktech is the only brand for V1
     const sumLiR = document.getElementById('sum-li-recycle')!;
     const sumNiR = document.getElementById('sum-ni-recycle')!;
     const sumMnR = document.getElementById('sum-mn-recycle')!;
-    // Carbon & water (same both scenarios)
+    // Carbon & CTUe
     const sumCarbon = document.getElementById('sum-carbon')!;
     const sumCarbonR = document.getElementById('sum-carbon-r')!;
     const sumCtue = document.getElementById('sum-ctue')!;
     const sumCtueR = document.getElementById('sum-ctue-r')!;
     const goldfishCount = document.getElementById('goldfish-count')!;
+    const metalDetailL = document.getElementById('metal-detail-landfill')!;
+    const metalDetailR = document.getElementById('metal-detail-recycle')!;
 
     // State
     const selected = new Map<string, number>();
+    let metalsVisible = false;
 
-    // Product metadata (from data attributes)
-    const productMeta = new Map<string, { name: string; spec: string; co: number; li: number; ni: number; mn: number; carbon: number; water: number; recovery: number; carbonLf: number; carbonRc: number; waterLf: number; waterRc: number; ctueLf: number; ctueRc: number }>();
+    // Product metadata from card dataset
+    const productMeta = new Map<string, { name: string; spec: string; co: number; li: number; ni: number; mn: number; carbon: number; water: number; recovery: number; carbonLf: number; carbonRc: number; waterLf: number; waterRc: number; ctueLf: number; ctueRc: number; bom: string }>();
 
-    checkboxes.forEach(cb => {
-      const id = cb.value;
+    productCards.forEach(card => {
+      const el = card as HTMLElement;
+      const id = el.dataset.id!;
       productMeta.set(id, {
-        name: cb.closest('.ps-card')?.querySelector('.ps-card-name')?.textContent || id,
-        spec: cb.closest('.ps-card')?.querySelector('.ps-card-specs')?.textContent || '',
-        co: parseFloat(cb.dataset.co || '0'),
-        li: parseFloat(cb.dataset.li || '0'),
-        ni: parseFloat(cb.dataset.ni || '0'),
-        mn: parseFloat(cb.dataset.mn || '0'),
-        carbon: parseFloat(cb.dataset.carbon || '0'),
-        water: parseFloat(cb.dataset.water || '0'),
-        recovery: parseFloat(cb.dataset.recovery || '0.95'),
-        carbonLf: parseFloat(cb.dataset.carbonLf || '0.3'),
-        carbonRc: parseFloat(cb.dataset.carbonRc || '0.15'),
-        waterLf: parseFloat(cb.dataset.waterLf || '20'),
-        waterRc: parseFloat(cb.dataset.waterRc || '10'),
-        ctueLf: parseFloat(cb.dataset.ctueLf || '6.2'),
-        ctueRc: parseFloat(cb.dataset.ctueRc || '0.31'),
+        name: el.dataset.name || id,
+        spec: el.dataset.specs || '',
+        co: parseFloat(el.dataset.co || '0'),
+        li: parseFloat(el.dataset.li || '0'),
+        ni: parseFloat(el.dataset.ni || '0'),
+        mn: parseFloat(el.dataset.mn || '0'),
+        carbon: parseFloat(el.dataset.carbon || '0'),
+        water: parseFloat(el.dataset.water || '0'),
+        recovery: parseFloat(el.dataset.recovery || '0.95'),
+        carbonLf: parseFloat(el.dataset.carbonLf || '0.3'),
+        carbonRc: parseFloat(el.dataset.carbonRc || '0.15'),
+        waterLf: parseFloat(el.dataset.waterLf || '20'),
+        waterRc: parseFloat(el.dataset.waterRc || '10'),
+        ctueLf: parseFloat(el.dataset.ctueLf || '6.2'),
+        ctueRc: parseFloat(el.dataset.ctueRc || '0.31'),
+        bom: el.dataset.bom || '[]',
       });
     });
 
@@ -1374,32 +1310,33 @@ const brand = brands[0]; // Cuktech is the only brand for V1
         selectedList.innerHTML = '';
         calcStatus.textContent = '尚未选择';
         calcTotalBar.style.display = 'none';
+        metalToggle.style.display = 'none';
         calcEmpty.style.display = '';
         calcResults.style.display = 'none';
       } else {
-        calcStatus.textContent = `${selected.size} 款`;
+        calcStatus.textContent = `已选 ${selected.size} 款`;
         calcTotalBar.style.display = 'flex';
+        metalToggle.style.display = '';
         calcEmpty.style.display = 'none';
         calcResults.style.display = '';
         let html = '';
-        selected.forEach((qty, id) => {
+        selected.forEach((_qty, id) => {
           const m = productMeta.get(id);
           if (!m) return;
-          html += `
-            <div class="calc-sel-item">
-              <div class="calc-sel-name">${m.name}</div>
-              <div class="calc-sel-qty">
-                <button data-action="dec" data-id="${id}">−</button>
-                <span class="calc-sel-qty-val">${qty}</span>
-                <button data-action="inc" data-id="${id}">+</button>
-              </div>
-              <button class="calc-sel-remove" data-action="remove" data-id="${id}" title="移除">×</button>
-            </div>`;
+          html += `<span class="sel-chip"><span class="sel-chip-name">${m.name}</span><button type="button" class="sel-chip-x" data-action="remove" data-id="${id}">×</button></span>`;
         });
         selectedList.innerHTML = html;
       }
       updateTotals();
     }
+
+    // Metal toggle
+    metalToggle.addEventListener('click', () => {
+      metalsVisible = !metalsVisible;
+      metalDetailL.style.display = metalsVisible ? '' : 'none';
+      metalDetailR.style.display = metalsVisible ? '' : 'none';
+      metalToggle.textContent = metalsVisible ? '收起材料明细' : '查看材料明细';
+    });
 
     function updateTotals() {
       let co = 0, li = 0, ni = 0, mn = 0;
@@ -1451,64 +1388,53 @@ const brand = brands[0]; // Cuktech is the only brand for V1
       });
     }
 
-    // Checkbox → add/remove from selected
-    checkboxes.forEach(cb => {
-      cb.addEventListener('change', () => {
-        if (cb.checked) {
-          selected.set(cb.value, 1);
+    // Card click → toggle selection
+    productCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const id = (card as HTMLElement).dataset.id!;
+        if (selected.has(id)) {
+          selected.delete(id);
+          card.classList.remove('selected');
         } else {
-          selected.delete(cb.value);
+          selected.set(id, 1);
+          card.classList.add('selected');
         }
         render();
       });
     });
 
-    // Delegate clicks on selected items (qty +/-, remove)
+    // Delegate clicks on selected chips (remove only)
     selectedList.addEventListener('click', (e) => {
       const btn = (e.target as HTMLElement).closest('button') as HTMLButtonElement | null;
       if (!btn) return;
       const action = btn.dataset.action;
       const id = btn.dataset.id;
-      if (!action || !id) return;
-
-      if (action === 'inc') {
-        selected.set(id, (selected.get(id) || 1) + 1);
-      } else if (action === 'dec') {
-        const qty = selected.get(id) || 1;
-        if (qty <= 1) {
-          selected.delete(id);
-          // Uncheck the corresponding checkbox
-          const cb = document.querySelector(`.ps-checkbox[value="${id}"]`) as HTMLInputElement;
-          if (cb) cb.checked = false;
-        } else {
-          selected.set(id, qty - 1);
-        }
-      } else if (action === 'remove') {
+      if (action === 'remove' && id) {
         selected.delete(id);
-        const cb = document.querySelector(`.ps-checkbox[value="${id}"]`) as HTMLInputElement;
-        if (cb) cb.checked = false;
+        const card = document.querySelector(`.product-card[data-id="${id}"]`);
+        if (card) card.classList.remove('selected');
+        render();
       }
-      render();
     });
 
     // Clear all
     clearBtn.addEventListener('click', () => {
       selected.clear();
-      checkboxes.forEach(cb => { cb.checked = false; });
+      productCards.forEach(card => card.classList.remove('selected'));
       render();
     });
 
     render();
 
-    // Learn More → full-screen modal
+    // BOM modal — open on card right-click or could be triggered from Reference
     const modal = document.getElementById('learn-modal')!;
     const modalTitle = document.getElementById('modal-title')!;
     const modalBody = document.getElementById('modal-body')!;
     const modalClose = document.getElementById('modal-close')!;
 
-    function openModal(btn: HTMLElement) {
-      const name = btn.dataset.name || '产品';
-      const bomJson = btn.dataset.bom || '[]';
+    function openModal(card: HTMLElement) {
+      const name = card.dataset.name || '产品';
+      const bomJson = card.dataset.bom || '[]';
       const bom = JSON.parse(bomJson);
 
       let bomHtml = '';
@@ -1539,9 +1465,6 @@ const brand = brands[0]; // Cuktech is the only brand for V1
       modal.hidden = true;
     }
 
-    document.querySelectorAll('.ps-learn-btn').forEach(btn => {
-      btn.addEventListener('click', () => openModal(btn as HTMLElement));
-    });
     modalClose.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
