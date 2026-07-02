@@ -11,10 +11,10 @@ export interface Props {
 }
 const { product } = Astro.props;
 const chemLabels: Record<string, string> = {
-  'LFP': '磷酸铁锂',
-  'NCM': '镍钴锰',
-  'LCO': '钴酸锂',
-  'Li-polymer': '锂聚合物'
+  'LFP': 'LFP',
+  'NCM': 'NCM',
+  'LCO': 'LCO',
+  'Li-polymer': 'Li-polymer'
 };
 ---
 <a href={`/product/${product.id}`} class="btn-product">

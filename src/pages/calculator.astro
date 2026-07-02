@@ -1,0 +1,563 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import products from '../data/products.json';
+import metricsData from '../data/metrics.json';
+import brands from '../data/brands.json';
+
+const catalog = products.map(p => {
+  const m = metricsData.find(m => m.product_id === p.id);
+  return { product: p, metrics: m };
+}).filter(x => x.metrics);
+
+const productBom: Record<string, { cat: string; fn: string; brand: string; spec: string; pkg: string; qty: number }[]> = {
+  'cuktech-pb060': [{ cat: 'Chip', fn: 'Protocol Chip', brand: 'ABOV', spec: 'A94P829KUN', pkg: '32QFN', qty: 1 },{ cat: 'Chip', fn: 'LED Driver', brand: 'TM天微', spec: 'TM1643', pkg: 'SOP24', qty: 1 },{ cat: 'Chip', fn: 'Buck-Boost Chip', brand: 'SOUTHCHIP南芯', spec: 'SC8815', pkg: 'QFN-32', qty: 1 },{ cat: 'Chip', fn: 'Sync Buck Chip', brand: 'Silergy矽力杰', spec: 'SY8301', pkg: 'SOT23-6', qty: 1 },{ cat: 'Chip', fn: 'Battery Protection Chip', brand: 'iCM创芯微', spec: 'CM1020', pkg: 'SOT23-6', qty: 1 },{ cat: 'Power Component', fn: 'Sync Buck-Boost MOSFET', brand: 'AOS万国', spec: 'AON7534', pkg: 'DFN3X3', qty: 4 },{ cat: 'Power Component', fn: 'VBUS开关管', brand: 'AOS万国', spec: 'AO4423', pkg: 'SOIC-8', qty: 4 },{ cat: 'Power Component', fn: 'Battery Protection MOSFET', brand: 'Semione芯电元', spec: 'PE8250M', pkg: 'PDFN3.3x3.3-8L', qty: 2 },{ cat: 'Cell', fn: 'Energy Storage', brand: 'SunPower长虹三杰', spec: 'INR18650-3000', pkg: 'Series', qty: 2 }],
+  'cuktech-wpb100p': [{ cat: 'Chip', fn: 'Li-ion Protection Chip', brand: 'iCM创芯微', spec: 'CM1025-QA', pkg: 'SOT23-6', qty: 1 },{ cat: 'Chip', fn: 'Power Bank SoC', brand: 'INJOINIC英集芯', spec: 'IP5385', pkg: 'QFN48', qty: 1 },{ cat: 'Chip', fn: 'Wireless Charging Ctrl', brand: 'INJOINIC英集芯', spec: 'IP6823', pkg: 'QFN24', qty: 1 },{ cat: 'Chip', fn: 'MCU', brand: 'WCH沁恒', spec: 'CH32X035F8U6', pkg: 'QFN20', qty: 1 },{ cat: 'Chip', fn: 'Touch Chip', brand: '', spec: 'HK51XS', pkg: 'SOT23-6', qty: 1 },{ cat: 'Power Component', fn: 'Li-ion Protection MOSFET', brand: '', spec: '7442', pkg: 'DFN3*3', qty: 2 },{ cat: 'Power Component', fn: 'Sync Buck-Boost MOSFET', brand: 'CQAOS重庆万国', spec: 'CQY7534N', pkg: 'DFN3*3EP', qty: 4 },{ cat: 'Power Component', fn: 'VBUS开关管', brand: 'CQAOS重庆万国', spec: 'CQY7534N', pkg: 'DFN3*3EP', qty: 3 },{ cat: 'Power Component', fn: 'Wireless Charging MOSFET', brand: 'APM永源微', spec: 'AP20G02BDF', pkg: 'PDFN3*3-8L', qty: 2 },{ cat: 'Capacitor', fn: 'LV Filter Capacitor', brand: 'APAQ钰邦', spec: '16V100μF', pkg: 'SMD', qty: 2 },{ cat: 'Capacitor', fn: 'LV Filter Capacitor', brand: 'JSH万京源', spec: '25V100μF', pkg: 'SMD', qty: 1 },{ cat: 'Cell', fn: 'Energy Storage', brand: 'LS力神', spec: '3.85V5000mAh', pkg: '526578', qty: 2 }],
+};
+const brand = brands[0];
+---
+
+<BaseLayout title="Calculator — batterytrace" description="Select a Cuktech power bank to estimate metal leakage, carbon footprint, and ecotoxicity from production to disposal.">
+
+  <div class="earth">
+
+    <div class="earth-tagline">
+      <h1 class="earth-tagline-main">In any system isolated from its surroundings, matter can neither be created nor destroyed — only change its form or combination.</h1>
+      <p class="earth-tagline-punch">So do heavy metals.</p>
+    </div>
+
+    <!-- Results Panel -->
+    <div class="calc-panel" id="calc-panel" aria-live="polite" aria-atomic="true">
+      <div class="calc-panel-header">
+        <span>Selected Products</span>
+        <span class="calc-panel-count" id="calc-status">Nothing selected</span>
+      </div>
+      <div class="calc-selected-list" id="selected-items">
+        <div class="calc-empty-state" id="calc-empty">
+          <div class="calc-empty-title">Click any product below to begin</div>
+        </div>
+      </div>
+      <div id="calc-results" style="display:none;">
+        <div class="scenario-cards">
+          <div class="scenario-card landfill">
+            <div class="scenario-card-title">Unregulated Disposal</div>
+            <div class="scenario-metrics">
+              <div class="scenario-metric">
+                <div class="calc-value landfill-color" id="sum-carbon">0</div>
+                <div class="calc-label">Carbon Footprint kg CO₂eq</div>
+                <div class="calc-analogy" id="carbon-analogy-lf">≈ driving 0 km</div>
+              </div>
+              <div class="scenario-metric">
+                <div class="calc-value landfill-color" id="sum-ctue">0</div>
+                <div class="calc-label">Ecotoxicity CTUe</div>
+                <div class="calc-analogy" id="ctue-analogy-lf">≈ 0% species affected in pond</div>
+              </div>
+            </div>
+            <div class="metal-detail" id="metal-detail-landfill" style="display:none;">
+              <div class="metal-row">
+                <div class="metal-item"><div class="calc-value-small" id="sum-co-landfill">0</div><div class="calc-label">Co (g)</div></div>
+                <div class="metal-item"><div class="calc-value-small" id="sum-li-landfill">0</div><div class="calc-label">Li (g)</div></div>
+                <div class="metal-item"><div class="calc-value-small" id="sum-ni-landfill">0</div><div class="calc-label">Ni (g)</div></div>
+                <div class="metal-item"><div class="calc-value-small" id="sum-mn-landfill">0</div><div class="calc-label">Mn (g)</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="scenario-card recycle">
+            <div class="scenario-card-title">Proper Recycling</div>
+            <div class="scenario-metrics">
+              <div class="scenario-metric">
+                <div class="calc-value recycle-color" id="sum-carbon-r">0</div>
+                <div class="calc-label">Carbon Footprint kg CO₂eq</div>
+                <div class="calc-analogy" id="carbon-analogy-rc">≈ driving 0 km</div>
+              </div>
+              <div class="scenario-metric">
+                <div class="calc-value recycle-color" id="sum-ctue-r">0</div>
+                <div class="calc-label">Ecotoxicity CTUe</div>
+                <div class="calc-analogy" id="ctue-analogy-rc">≈ 0% species affected in pond</div>
+              </div>
+            </div>
+            <div class="metal-detail" id="metal-detail-recycle" style="display:none;">
+              <div class="metal-row">
+                <div class="metal-item"><div class="calc-value-small recycled" id="sum-co-recycle">0</div><div class="calc-label">Co (g)</div></div>
+                <div class="metal-item"><div class="calc-value-small recycled" id="sum-li-recycle">0</div><div class="calc-label">Li (g)</div></div>
+                <div class="metal-item"><div class="calc-value-small recycled" id="sum-ni-recycle">0</div><div class="calc-label">Ni (g)</div></div>
+                <div class="metal-item"><div class="calc-value-small recycled" id="sum-mn-recycle">0</div><div class="calc-label">Mn (g)</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="metal-toggle" id="metal-toggle" style="display:none;">View Material Details</button>
+        <div class="ctue-footnote" id="ctue-footnote" style="display:none;"></div>
+        <div class="calc-actions" id="calc-total-bar" style="display:none;">
+          <button class="calc-clear-btn" id="calc-clear">Clear Selection</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-wrap">
+      <input type="text" class="search-input" id="rock-search" placeholder="Search power banks..." autocomplete="off" />
+    </div>
+
+    <!-- Product cards scattered like rocks in dirt -->
+    <div class="rock-field" id="product-list">
+      {catalog.map((item, i) => (
+        <article
+          class="rock-card"
+          style={`--rot: ${(i % 7 - 3) * 1.8}deg; --x: ${(i % 5 - 2) * 3}px; --delay: ${i * 0.03}s`}
+          data-id={item.product.id}
+          data-co={item.metrics.cobalt_g} data-li={item.metrics.lithium_g}
+          data-ni={item.metrics.nickel_g} data-mn={item.metrics.manganese_g}
+          data-carbon={item.metrics.carbon_kg_co2eq} data-water={item.metrics.water_liters}
+          data-recovery={item.metrics.recovery_rate ?? 0.95}
+          data-carbon-lf={item.metrics.carbon_disposal_landfill ?? 0.3}
+          data-carbon-rc={item.metrics.carbon_disposal_recycle ?? 0.15}
+          data-ctue-lf={item.metrics.ctue_landfill ?? 6.2}
+          data-ctue-rc={item.metrics.ctue_recycle ?? 0.31}
+          data-name={item.product.name}
+          data-specs={`${item.product.capacity_mah.toLocaleString()}mAh · ${item.product.power_w}W · ${item.product.weight_g}g`}
+          data-bom={JSON.stringify(productBom[item.product.id] || [])}>
+          <div class="rock-img-wrap">
+            <img src={item.product.image} alt={item.product.name} class="rock-img" loading="lazy" />
+            <span class="rock-mark">✓</span>
+          </div>
+          <div class="rock-info">
+            <h3 class="rock-name">{item.product.name}</h3>
+            <p class="rock-specs">{item.product.capacity_mah.toLocaleString()}mAh</p>
+            <div class="rock-tooltip">{item.product.power_w}W · ¥{item.product.price_cny}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="earth-footer">
+      <div class="disclaimer">
+        <strong>Estimates, not brand measurements.</strong> Best approximations based on published academic literature and teardown reports. Cuktech has not provided or endorsed this data.
+      </div>
+      <a href="/reference" class="ref-link">Data Sources & Methodology →</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .earth {
+    min-height: 100vh;
+    background: url('/images/pollution-bg.jpg') center center / cover no-repeat fixed;
+    padding: 48px clamp(20px, 4vw, 60px) 80px;
+  }
+
+  /* Tagline */
+  .earth-tagline {
+    max-width: 1100px;
+    margin: 0 0 48px;
+    padding: 0 clamp(24px, 4vw, 60px);
+  }
+  .earth-tagline-main {
+    font-size: clamp(22px, 3.5vw, 40px);
+    font-weight: 600;
+    color: oklch(92% 0.005 85);
+    margin: 0;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-wrap: balance;
+    animation: reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .earth-tagline-punch {
+    font-size: clamp(28px, 5vw, 56px);
+    font-weight: 700;
+    color: oklch(55% 0.12 65);
+    margin: 10px 0 0;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    animation: reveal 1s 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes reveal {
+    0% { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Panel — like a weathered metal plate in the dirt */
+  .calc-panel {
+    max-width: 800px;
+    margin: 0 auto 48px;
+    background: oklch(16% 0.02 70 / 0.92);
+    border: 1px solid oklch(30% 0.03 75 / 0.4);
+    border-radius: 6px;
+    padding: 24px 28px;
+    color: oklch(88% 0.01 80);
+    box-shadow: 0 4px 24px oklch(10% 0.02 60 / 0.6), inset 0 1px 0 oklch(35% 0.03 75 / 0.15);
+  }
+  .calc-panel-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 14px; font-size: 15px; font-weight: 600;
+    color: oklch(85% 0.01 80);
+  }
+  .calc-panel-count { font-size: 12px; font-weight: 400; color: oklch(65% 0.02 75); }
+
+  .calc-empty-state { text-align: center; padding: 28px; }
+  .calc-empty-title { font-size: 14px; font-weight: 500; color: oklch(55% 0.02 75); }
+
+  /* Scenario cards */
+  .scenario-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .scenario-card {
+    border-radius: 4px; padding: 18px;
+    border: 1px solid oklch(30% 0.03 75 / 0.3);
+  }
+  .scenario-card.landfill {
+    background: oklch(16% 0.025 25 / 0.6);
+    border-color: oklch(40% 0.1 25 / 0.3);
+  }
+  .scenario-card.recycle {
+    background: oklch(16% 0.025 165 / 0.6);
+    border-color: oklch(40% 0.08 175 / 0.3);
+  }
+  .scenario-card-title {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 12px;
+  }
+  .scenario-card.landfill .scenario-card-title { color: oklch(65% 0.12 25); }
+  .scenario-card.recycle .scenario-card-title { color: oklch(65% 0.1 175); }
+
+  .scenario-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .scenario-metric { text-align: center; }
+
+  .calc-value { font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .calc-value.landfill-color { color: oklch(65% 0.12 25); }
+  .calc-value.recycle-color { color: oklch(65% 0.1 175); }
+  .calc-value-small { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; color: oklch(80% 0.01 80); }
+  .calc-value-small.recycled { color: oklch(65% 0.1 175); }
+  .calc-label { font-size: 11px; color: oklch(60% 0.015 75); margin-top: 2px; }
+  .calc-analogy { font-size: 11px; color: oklch(55% 0.015 75); margin-top: 3px; }
+
+  .metal-detail { margin-top: 10px; }
+  .metal-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; padding-top: 10px; border-top: 1px solid oklch(30% 0.02 75 / 0.2); }
+  .metal-item { display: flex; flex-direction: column; align-items: center; }
+
+  .calc-actions { display: flex; justify-content: center; margin-top: 14px; }
+  .calc-clear-btn {
+    padding: 6px 20px; background: none;
+    border: 1px solid oklch(35% 0.02 75 / 0.3);
+    color: oklch(60% 0.015 75); border-radius: 4px; font-size: 12px;
+    cursor: pointer; transition: border-color 0.15s, color 0.15s;
+  }
+  .calc-clear-btn:hover { border-color: oklch(55% 0.15 25); color: oklch(65% 0.15 25); }
+  .metal-toggle {
+    display: block; margin: 12px auto 0; padding: 4px 14px; background: none;
+    border: 1px solid oklch(30% 0.02 75 / 0.2);
+    color: oklch(55% 0.015 75); border-radius: 4px; font-size: 11px;
+    cursor: pointer; transition: border-color 0.15s, color 0.15s;
+  }
+  .metal-toggle:hover { border-color: oklch(50% 0.03 75); color: oklch(70% 0.015 75); }
+  .ctue-footnote { font-size: 11px; color: oklch(50% 0.015 75); text-align: center; margin-top: 8px; }
+  .calc-selected-list { display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto; padding-right: 4px; }
+  .calc-selected-list::-webkit-scrollbar { width: 4px; }
+  .calc-selected-list::-webkit-scrollbar-thumb { background: oklch(35% 0.02 75); border-radius: 99px; }
+
+  /* Search */
+  .search-wrap {
+    max-width: 600px;
+    margin: 0 auto 32px;
+    padding: 0 16px;
+  }
+  .search-input {
+    width: 100%;
+    padding: 12px 20px;
+    background: oklch(28% 0.04 75 / 0.7);
+    border: 1px solid oklch(45% 0.08 70 / 0.4);
+    border-radius: 6px;
+    color: oklch(92% 0.01 85);
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input::placeholder { color: oklch(60% 0.04 70); }
+  .search-input:focus { border-color: oklch(55% 0.12 65 / 0.6); }
+
+  /* ═══ ROCK FIELD ═══ */
+  .rock-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px 32px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+  .rock-card {
+    width: 220px;
+    background: oklch(25% 0.03 75 / 0.85);
+    border: 1px solid oklch(35% 0.04 75 / 0.35);
+    border-radius: 40% 60% 55% 45% / 45% 50% 50% 55%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s, box-shadow 0.2s;
+    transform: rotate(var(--rot, 0deg)) translateX(var(--x, 0px));
+    box-shadow:
+      0 6px 20px oklch(12% 0.02 60 / 0.5),
+      inset 0 1px 0 oklch(40% 0.04 75 / 0.12);
+    animation: settle 0.6s var(--delay, 0s) cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes settle {
+    0% { opacity: 0; transform: rotate(var(--rot, 0deg)) translateY(24px); }
+    100% { opacity: 1; transform: rotate(var(--rot, 0deg)) translateY(0); }
+  }
+
+  .rock-card:hover {
+    transform: rotate(0deg) translateY(-6px);
+    border-color: oklch(55% 0.08 75 / 0.5);
+    box-shadow: 0 12px 36px oklch(10% 0.02 60 / 0.7), inset 0 1px 0 oklch(45% 0.04 75 / 0.2);
+    z-index: 2;
+  }
+  .rock-card.selected {
+    border-color: oklch(65% 0.16 155);
+    box-shadow: 0 0 0 2px oklch(65% 0.16 155 / 0.3), 0 8px 28px oklch(10% 0.02 60 / 0.6);
+  }
+
+  /* alternate rock shapes */
+  .rock-card:nth-child(3n) { border-radius: 50% 40% 60% 45% / 55% 45% 50% 50%; }
+  .rock-card:nth-child(5n) { border-radius: 35% 65% 50% 55% / 50% 45% 55% 45%; width: 200px; }
+  .rock-card:nth-child(7n) { border-radius: 55% 45% 40% 60% / 45% 55% 45% 50%; width: 240px; }
+  .rock-card:nth-child(4n) { width: 210px; }
+  .rock-card:nth-child(6n) { width: 230px; }
+
+  .rock-img-wrap {
+    position: relative;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+    background: oklch(22% 0.015 75);
+  }
+  .rock-img {
+    width: 100%; height: 100%; object-fit: contain;
+    padding: 20px;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .rock-card:hover .rock-img { transform: scale(1.06); }
+
+  .rock-mark {
+    position: absolute; top: 8px; right: 8px;
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 2px solid oklch(35% 0.03 75 / 0.3);
+    background: oklch(15% 0.02 70 / 0.7);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: transparent;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .rock-card.selected .rock-mark {
+    background: oklch(65% 0.16 155);
+    border-color: oklch(65% 0.16 155);
+    color: oklch(20% 0.01 155);
+  }
+
+  .rock-info { padding: 14px 16px 16px; }
+  .rock-name {
+    font-size: 13px; font-weight: 600; color: oklch(82% 0.015 80);
+    margin: 0 0 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .rock-specs { font-size: 11px; color: oklch(55% 0.02 75); margin: 0; }
+
+  /* Tooltip on hover */
+  .rock-tooltip {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: oklch(18% 0.02 70 / 0.95);
+    border: 1px solid oklch(35% 0.03 75 / 0.4);
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: oklch(80% 0.02 80);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 3;
+  }
+  .rock-card:hover .rock-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Footer */
+  .earth-footer {
+    max-width: 800px; margin: 48px auto 0; text-align: center;
+    display: flex; flex-direction: column; gap: 14px; align-items: center;
+  }
+  .earth-footer .disclaimer {
+    background: oklch(18% 0.02 75 / 0.6);
+    border: 1px solid oklch(30% 0.03 75 / 0.2);
+    padding: 12px 18px; border-radius: 4px;
+    font-size: 12px; color: oklch(60% 0.02 75);
+  }
+  .earth-footer .disclaimer strong { color: oklch(70% 0.03 75); }
+  .earth-footer .ref-link {
+    display: inline-block; padding: 8px 20px;
+    background: oklch(20% 0.02 75 / 0.5);
+    border: 1px solid oklch(30% 0.03 75 / 0.25);
+    border-radius: 4px; color: oklch(60% 0.02 75);
+    font-size: 12px; font-weight: 500; text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .earth-footer .ref-link:hover { border-color: oklch(45% 0.04 75); color: oklch(75% 0.02 75); }
+
+  /* Selected items */
+  .selected-item-card {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px 14px; margin-bottom: 4px;
+    background: oklch(20% 0.02 75 / 0.4);
+    border: 1px solid oklch(30% 0.03 75 / 0.2); border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .selected-item-card:hover { background: oklch(22% 0.025 75 / 0.5); }
+  .sic-info { flex: 1; min-width: 0; }
+  .sic-name { font-size: 13px; font-weight: 600; color: oklch(85% 0.01 80); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sic-spec { font-size: 11px; color: oklch(55% 0.015 75); }
+  .sic-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .qty-control { display: inline-flex; align-items: center; gap: 3px; height: 24px; padding: 1px; border-radius: 99px; background: oklch(22% 0.02 75 / 0.5); border: 1px solid oklch(30% 0.03 75 / 0.2); }
+  .qty-btn, .remove-btn {
+    appearance: none; -webkit-appearance: none; border: 0; outline: 0; margin: 0; padding: 0;
+    width: 22px; height: 22px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: oklch(28% 0.025 75 / 0.5); color: oklch(65% 0.015 75);
+    font-size: 12px; line-height: 1; font-family: inherit; cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .qty-btn:hover { background: oklch(45% 0.06 155 / 0.3); color: oklch(70% 0.1 155); }
+  .qty-num { min-width: 18px; text-align: center; font-size: 12px; font-weight: 600; color: oklch(80% 0.01 80); }
+  .remove-btn { background: transparent; color: oklch(45% 0.02 75); font-size: 14px; }
+  .remove-btn:hover { background: oklch(40% 0.1 25 / 0.25); color: oklch(65% 0.15 25); }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); color: oklch(70% 0.16 155); }
+    100% { transform: scale(1); }
+  }
+  .calc-value.pulse { animation: pulse 0.3s ease-out; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rock-card { animation: none; }
+    .earth-tagline-main,
+    .earth-tagline-punch { animation: none; }
+    .calc-value.pulse { animation: none; }
+    .rock-card:hover { transform: rotate(0deg) translateY(-2px); }
+    .rock-card:hover .rock-img { transform: none; }
+  }
+
+  @media (max-width: 860px) {
+    .rock-field { gap: 20px 20px; }
+    .rock-card { width: 180px; }
+    .rock-card:nth-child(5n), .rock-card:nth-child(6n), .rock-card:nth-child(7n) { width: 180px; }
+  }
+  @media (max-width: 680px) {
+    .earth { padding: 32px 14px 60px; }
+    .calc-panel { padding: 20px; }
+    .scenario-cards { grid-template-columns: 1fr; }
+    .rock-field { gap: 16px; }
+    .rock-card { width: 150px; }
+    .rock-card:nth-child(5n), .rock-card:nth-child(6n), .rock-card:nth-child(7n) { width: 150px; }
+    .rock-name { font-size: 12px; }
+    .rock-img { padding: 14px; }
+    .calc-value { font-size: 24px; }
+    .metal-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const productCards = document.querySelectorAll('.rock-card') as NodeListOf<HTMLElement>;
+    const searchInput = document.getElementById('rock-search') as HTMLInputElement;
+
+    // Search filter
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.toLowerCase();
+      productCards.forEach(card => {
+        const name = (card as HTMLElement).dataset.name?.toLowerCase() || '';
+        (card as HTMLElement).style.display = name.includes(q) ? '' : 'none';
+      });
+    });
+    const selectedList = document.getElementById('selected-items')!;
+    const calcStatus = document.getElementById('calc-status')!;
+    const calcTotalBar = document.getElementById('calc-total-bar')!;
+    const clearBtn = document.getElementById('calc-clear')!;
+    const metalToggle = document.getElementById('metal-toggle')!;
+    const calcEmpty = document.getElementById('calc-empty')!;
+    const calcResults = document.getElementById('calc-results')!;
+
+    const sumCoL=document.getElementById('sum-co-landfill')!,sumLiL=document.getElementById('sum-li-landfill')!,sumNiL=document.getElementById('sum-ni-landfill')!,sumMnL=document.getElementById('sum-mn-landfill')!;
+    const sumCoR=document.getElementById('sum-co-recycle')!,sumLiR=document.getElementById('sum-li-recycle')!,sumNiR=document.getElementById('sum-ni-recycle')!,sumMnR=document.getElementById('sum-mn-recycle')!;
+    const sumCarbon=document.getElementById('sum-carbon')!,sumCarbonR=document.getElementById('sum-carbon-r')!;
+    const sumCtue=document.getElementById('sum-ctue')!,sumCtueR=document.getElementById('sum-ctue-r')!;
+    const metalDetailL=document.getElementById('metal-detail-landfill')!,metalDetailR=document.getElementById('metal-detail-recycle')!;
+
+    const selected = new Map<string, number>();
+    let metalsVisible = false;
+    const productMeta = new Map<string, any>();
+    productCards.forEach(card => {
+      const el=card as HTMLElement; const id=el.dataset.id!;
+      productMeta.set(id,{
+        name:el.dataset.name||id,spec:el.dataset.specs||'',
+        co:parseFloat(el.dataset.co||'0'),li:parseFloat(el.dataset.li||'0'),ni:parseFloat(el.dataset.ni||'0'),mn:parseFloat(el.dataset.mn||'0'),
+        carbon:parseFloat(el.dataset.carbon||'0'),water:parseFloat(el.dataset.water||'0'),
+        recovery:parseFloat(el.dataset.recovery||'0.95'),
+        carbonLf:parseFloat(el.dataset.carbonLf||'0.3'),carbonRc:parseFloat(el.dataset.carbonRc||'0.15'),
+        ctueLf:parseFloat(el.dataset.ctueLf||'6.2'),ctueRc:parseFloat(el.dataset.ctueRc||'0.31'),
+        bom:el.dataset.bom||'[]',
+      });
+    });
+
+    function render() {
+      if(selected.size===0){
+        selectedList.innerHTML='';calcStatus.textContent='Nothing selected';
+        calcTotalBar.style.display='none';metalToggle.style.display='none';
+        calcEmpty.style.display='';calcResults.style.display='none';
+      }else{
+        const t=Array.from(selected.values()).reduce((a,b)=>a+b,0);
+        calcStatus.textContent=`Selected ${selected.size} · ${t} total`;
+        calcTotalBar.style.display='flex';metalToggle.style.display='';
+        calcEmpty.style.display='none';calcResults.style.display='';
+        let html='';
+        selected.forEach((qty,id)=>{
+          const m=productMeta.get(id);if(!m)return;
+          html+=`<div class="selected-item-card"><div class="sic-info"><div class="sic-name">${m.name}</div><div class="sic-spec">${m.spec}</div></div><div class="sic-controls"><div class="qty-control"><button type="button" class="qty-btn" data-action="dec" data-id="${id}">−</button><span class="qty-num">${qty}</span><button type="button" class="qty-btn" data-action="inc" data-id="${id}">+</button></div><button type="button" class="remove-btn" data-action="remove" data-id="${id}">×</button></div></div>`;
+        });
+        selectedList.innerHTML=html;
+      }
+      updateTotals();
+    }
+
+    metalToggle.addEventListener('click',()=>{
+      metalsVisible=!metalsVisible;
+      metalDetailL.style.display=metalsVisible?'':'none';
+      metalDetailR.style.display=metalsVisible?'':'none';
+      metalToggle.textContent=metalsVisible?'Hide Material Details':'View Material Details';
+    });
+
+    function updateTotals(){
+      let co=0,li=0,ni=0,mn=0,coR=0,liR=0,niR=0,mnR=0,cLf=0,cRc=0,ctLf=0,ctRc=0;
+      selected.forEach((qty,id)=>{
+        const m=productMeta.get(id);if(!m)return;
+        co+=m.co*qty;li+=m.li*qty;ni+=m.ni*qty;mn+=m.mn*qty;
+        coR+=m.co*(1-m.recovery)*qty;liR+=m.li*(1-m.recovery)*qty;niR+=m.ni*(1-m.recovery)*qty;mnR+=m.mn*(1-m.recovery)*qty;
+        cLf+=(m.carbon+m.carbonLf)*qty;cRc+=(m.carbon+m.carbonRc)*qty;
+        ctLf+=m.ctueLf*qty;ctRc+=m.ctueRc*qty;
+      });
+      sumCoL.textContent=co.toFixed(1);sumLiL.textContent=li.toFixed(1);sumNiL.textContent=ni.toFixed(1);sumMnL.textContent=mn.toFixed(1);
+      sumCarbon.textContent=cLf.toFixed(1);document.getElementById('carbon-analogy-lf')!.textContent=`≈ driving ${Math.round(cLf*8)} km`;
+      sumCoR.textContent=coR.toFixed(2);sumLiR.textContent=liR.toFixed(2);sumNiR.textContent=niR.toFixed(2);sumMnR.textContent=mnR.toFixed(2);
+      sumCarbonR.textContent=cRc.toFixed(1);document.getElementById('carbon-analogy-rc')!.textContent=`≈ driving ${Math.round(cRc*8)} km`;
+      sumCtue.textContent=ctLf.toFixed(1);sumCtueR.textContent=ctRc.toFixed(2);
+      document.getElementById('ctue-analogy-lf')!.textContent=`≈ ${(ctLf*0.8).toFixed(2)}% species affected in 1000m³ pond`;
+      document.getElementById('ctue-analogy-rc')!.textContent=`≈ ${(ctRc*0.8).toFixed(2)}% species affected in 1000m³ pond`;
+      document.getElementById('ctue-footnote')!.textContent='Assumes a 1000m³ pond. Does not represent actual mortality rates.';
+      [sumCoL,sumLiL,sumNiL,sumMnL,sumCoR,sumLiR,sumNiR,sumMnR,sumCarbon,sumCarbonR].forEach(el=>{el.classList.remove('pulse');void(el as HTMLElement).offsetWidth;el.classList.add('pulse')});
+    }
+
+    productCards.forEach(card=>{card.addEventListener('click',()=>{const id=(card as HTMLElement).dataset.id!;if(selected.has(id)){selected.delete(id);card.classList.remove('selected')}else{selected.set(id,1);card.classList.add('selected')}render()})});
+    selectedList.addEventListener('click',(e)=>{const btn=(e.target as HTMLElement).closest('button') as HTMLButtonElement|null;if(!btn)return;const a=btn.dataset.action,id=btn.dataset.id;if(!a||!id)return;if(a==='inc')selected.set(id,(selected.get(id)||1)+1);else if(a==='dec'){const q=selected.get(id)||1;if(q<=1){selected.delete(id);const c=document.querySelector(`.rock-card[data-id="${id}"]`);if(c)c.classList.remove('selected')}else selected.set(id,q-1)}else if(a==='remove'){selected.delete(id);const c=document.querySelector(`.rock-card[data-id="${id}"]`);if(c)c.classList.remove('selected')}render()});
+    clearBtn.addEventListener('click',()=>{selected.clear();productCards.forEach(c=>c.classList.remove('selected'));metalsVisible=false;metalDetailL.style.display='none';metalDetailR.style.display='none';metalToggle.textContent='View Material Details';render()});
+    if(productCards.length>0){const fc=productCards[0] as HTMLElement;selected.set(fc.dataset.id!,1);fc.classList.add('selected')}render();
+  });
+</script>

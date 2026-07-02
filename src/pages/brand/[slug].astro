@@ -18,14 +18,14 @@ const brandProducts = products
   .sort((a, b) => b.capacity_mah - a.capacity_mah);
 ---
 
-<BaseLayout title={`${brand.name} 充电宝环境代价`} description={`查看${brand.name}全系列充电宝的全生命周期环境代价估算数据。`}>
+<BaseLayout title={`${brand.name} Environmental Impact`} description={`Full lifecycle environmental impact estimates for all ${brand.name} power banks.`}>
   <Breadcrumb items={[
-    { label: '首页', href: '/' },
+    { label: 'Home', href: '/' },
     { label: brand.name }
   ]} />
 
   <div class="page-container">
-    <h1 class="page-title">{brand.name} <span style="font-size:16px;color:var(--text-secondary);font-weight:400;">· 共 {brandProducts.length} 款产品</span></h1>
+    <h1 class="page-title">{brand.name} <span style="font-size:16px;color:var(--text-secondary);font-weight:400;">· {brandProducts.length} products</span></h1>
 
     <div style="display: flex; flex-direction: column; gap: 12px;">
       {brandProducts.map(p => (

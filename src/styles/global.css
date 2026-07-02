@@ -4,15 +4,15 @@
    ═══════════════════════════════════════════════════ */
 
 :root {
-  --bg: #ffffff;
-  --card: #f8f8f8;
-  --border: #e5e5e5;
-  --text: #1a1a1a;
-  --text-secondary: #777;
-  --accent: #00a87a;
-  --accent-warn: #e89520;
-  --accent-danger: #d94433;
-  --water-blue: #3a7fdf;
+  --bg: oklch(6.5% 0.01 165);
+  --card: oklch(15% 0.009 165);
+  --border: rgba(255,255,255,0.07);
+  --text: rgba(255,255,255,0.85);
+  --text-secondary: rgba(255,255,255,0.45);
+  --accent: #00c896;
+  --accent-warn: #f5a623;
+  --accent-danger: #e8543d;
+  --water-blue: #4a9eff;
   --degrade-gray: #888;
   --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --max-width: 1040px;
@@ -28,6 +28,7 @@ body {
   font-family: var(--font);
   line-height: 1.6;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -41,13 +42,12 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   position: sticky;
   top: 0;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  background: oklch(6.5% 0.01 165 / 0.95);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
   z-index: 10;
 }
 .logo {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 750;
   letter-spacing: -0.6px;
   line-height: 1;
@@ -56,28 +56,29 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  color: var(--text);
 }
 .logo a::before {
   content: "";
   width: 10px;
   height: 10px;
   border-radius: 3px;
-  background: #00b98b;
-  box-shadow: 0 0 18px rgba(0,185,139,.45);
+  background: #00c896;
 }
-.logo span { color: #00b98b; }
+.logo span { color: #00c896; }
 .nav-links {
   display: flex;
-  gap: 32px;
-  font-size: 14px;
+  gap: 36px;
+  font-size: 16px;
 }
 .nav-links a {
-  color: rgba(0,0,0,0.55);
+  color: rgba(255,255,255,0.65);
   text-decoration: none;
   transition: color 0.15s;
+  font-weight: 500;
 }
 .nav-links a:hover {
-  color: rgba(0,0,0,0.85);
+  color: #fff;
 }
 /* ── Breadcrumb ── */
 .breadcrumb {
@@ -103,10 +104,11 @@ a { color: inherit; text-decoration: none; }
   transition: border-color 0.15s, background 0.15s;
   text-align: left;
   min-height: 44px;
+  color: var(--text);
 }
 .btn-brand:hover, .btn-product:hover {
-  border-color: #444;
-  background: #222;
+  border-color: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
 }
 .btn-product .product-name {
   font-size: 16px;
@@ -122,11 +124,12 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-secondary);
 }
 .btn-product .product-meta span {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.04);
   border: 1px solid var(--border);
   padding: 2px 8px;
   border-radius: 4px;
   font-size: 12px;
+  color: var(--text-secondary);
 }
 .btn-product .product-meta .tag-chemistry { color: var(--accent); border-color: var(--accent); }
 .btn-product .product-meta .tag-price { color: var(--accent-warn); }
@@ -195,15 +198,14 @@ a { color: inherit; text-decoration: none; }
 /* ── Disclaimer ── */
 .disclaimer-bar { margin-bottom: 24px; }
 .disclaimer {
-  background: #1a1f1a;
-  border: 1px solid #2a3a2a;
-  border-left: 3px solid var(--accent);
+  background: #f0faf5;
+  border: 1px solid rgba(0,168,122,0.2);
   padding: 12px 16px;
   border-radius: 6px;
   font-size: 13px;
-  color: #8a8;
+  color: #3d6b5a;
 }
-.disclaimer strong { color: var(--accent); }
+.disclaimer strong { color: #005a3f; }
 
 /* ── Metrics Grid ── */
 .metrics-grid {
@@ -222,7 +224,7 @@ a { color: inherit; text-decoration: none; }
   transition: border-color 0.2s;
   position: relative;
 }
-.metric-card:hover { border-color: #444; }
+.metric-card:hover { border-color: rgba(255,255,255,0.15); }
 .metric-card.full-width { grid-column: 1 / -1; }
 .metric-label {
   display: flex;
@@ -240,6 +242,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   letter-spacing: -1.5px;
   margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
 }
 .metric-value.carbon { color: #f5a623; }
 .metric-value.water { color: var(--water-blue); }
@@ -266,7 +269,7 @@ a { color: inherit; text-decoration: none; }
   width: 6px; height: 6px;
   border-radius: 50%;
   margin-right: 8px;
-  background: #444;
+  background: rgba(255,255,255,0.15);
 }
 .equivalence-area .eq-line { margin-bottom: 2px; }
 
@@ -306,7 +309,7 @@ a { color: inherit; text-decoration: none; }
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: #2a2a2a;
+  background: oklch(28% 0.005 165);
   border-radius: 3px;
   margin-top: 16px;
   overflow: hidden;
@@ -314,8 +317,10 @@ a { color: inherit; text-decoration: none; }
 .progress-fill {
   height: 100%;
   border-radius: 3px;
-  width: 0;
-  transition: width 0.6s ease;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .progress-fill.carbon { background: linear-gradient(90deg, #f5a623, #e8543d); }
 .progress-fill.water { background: linear-gradient(90deg, #4a9eff, #2563eb); }
@@ -328,7 +333,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   margin-top: 6px;
   font-size: 12px;
-  color: #555;
+  color: rgba(255,255,255,0.25);
 }
 
 /* ── Section divider ── */
@@ -337,7 +342,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: #555;
+  color: rgba(255,255,255,0.3);
   padding-top: 12px;
   border-top: 1px solid var(--border);
   margin-top: 8px;
@@ -351,17 +356,18 @@ a { color: inherit; text-decoration: none; }
 .ref-link {
   display: inline-block;
   padding: 12px 24px;
-  background: #0d0d0d;
-  border: 1px solid #222;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 8px;
-  color: var(--accent);
-  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
   font-weight: 500;
   text-decoration: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, color 0.15s;
 }
 .ref-link:hover {
-  border-color: var(--accent);
+  border-color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.75);
 }
 .methodology summary {
   font-size: 13px;
@@ -432,16 +438,16 @@ a { color: inherit; text-decoration: none; }
   border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s, border-color 0.15s;
 }
-.compare-btn:hover { background: var(--card); border-color: #444; }
+.compare-btn:hover { background: var(--card); border-color: rgba(255,255,255,0.15); }
 
 /* ── Footer ── */
 .site-footer {
   text-align: center;
   padding: 40px;
   font-size: 12px;
-  color: #444;
+  color: rgba(255,255,255,0.2);
 }
 
 /* ── Admin Styles ── */
@@ -470,7 +476,7 @@ a { color: inherit; text-decoration: none; }
 .btn-primary {
   display: inline-block;
   background: var(--accent);
-  color: #000;
+  color: #05100c;
   border: none;
   padding: 10px 24px;
   border-radius: 6px;
@@ -490,7 +496,7 @@ a { color: inherit; text-decoration: none; }
 .form-group { display: flex; flex-direction: column; }
 .form-group label { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
 .form-group input, .form-group select, .form-group textarea {
-  background: #111;
+  background: rgba(255,255,255,0.04);
   border: 1px solid var(--border);
   color: var(--text);
   padding: 8px 12px;
@@ -519,6 +525,13 @@ a { color: inherit; text-decoration: none; }
 .json-backup summary { cursor: pointer; color: var(--text-secondary); }
 .json-backup pre { background: #111; border: 1px solid var(--border); border-radius: 6px; padding: 14px; overflow-x: auto; font-size: 12px; max-height: 400px; overflow-y: auto; margin-top: 8px; }
 
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill { transition: none; }
+  .metric-card { transition: none; }
+  .btn-brand, .btn-product, .compare-btn, .ref-link, .buy-link, .back-link { transition: none; }
+}
+
 /* ── Responsive ── */
 @media (max-width: 680px) {
   .metrics-grid { grid-template-columns: 1fr; }
@@ -539,13 +552,13 @@ a { color: inherit; text-decoration: none; }
   gap: 16px;
   padding: 12px 16px;
   margin-bottom: 8px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
+  border-radius: 10px;
   transition: background 0.2s, border-color 0.2s;
 }
 .selected-item-card:hover {
-  background: rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.08);
   border-color: rgba(255,255,255,0.18);
 }
 

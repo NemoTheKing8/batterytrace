@@ -1,8 +1,8 @@
-[
+﻿[
   {
     "id": "cuktech-wpb100m",
     "brand_id": "cuktech",
-    "name": "酷态科 CP12磁吸电能块",
+    "name": "Cuktech CP12",
     "capacity_mah": 10000,
     "chemistry": "Li-polymer",
     "power_w": 20,
@@ -15,7 +15,7 @@
   {
     "id": "cuktech-lpb100",
     "brand_id": "cuktech",
-    "name": "酷态科 CP13电能块",
+    "name": "Cuktech CP13",
     "capacity_mah": 10000,
     "chemistry": "Li-ion",
     "power_w": 33,
@@ -28,7 +28,7 @@
   {
     "id": "cuktech-ba651",
     "brand_id": "cuktech",
-    "name": "酷态科 CP16二合一氮化镓电能块",
+    "name": "Cuktech CP16",
     "capacity_mah": 5000,
     "chemistry": "Li-ion",
     "power_w": 67,
@@ -41,7 +41,7 @@
   {
     "id": "cuktech-cp24s",
     "brand_id": "cuktech",
-    "name": "酷态科 CP24电能块",
+    "name": "Cuktech CP24",
     "capacity_mah": 20000,
     "chemistry": "Li-polymer",
     "power_w": 40,
@@ -54,7 +54,7 @@
   {
     "id": "cuktech-lpb200nl",
     "brand_id": "cuktech",
-    "name": "酷态科 CP24 电能块（自带双线）",
+    "name": "Cuktech CP24 (Dual Cable)",
     "capacity_mah": 20000,
     "chemistry": "Li-polymer",
     "power_w": 40,
@@ -67,7 +67,7 @@
   {
     "id": "cuktech-cp24",
     "brand_id": "cuktech",
-    "name": "酷态科 CP25 电能块（自带线）",
+    "name": "Cuktech CP25",
     "capacity_mah": 20000,
     "chemistry": "Li-polymer",
     "power_w": 40,
@@ -80,7 +80,7 @@
   {
     "id": "cuktech-pb060",
     "brand_id": "cuktech",
-    "name": "酷态科 6号超级电能块",
+    "name": "Cuktech 6 Power Bank",
     "capacity_mah": 6000,
     "chemistry": "Li-ion",
     "power_w": 55,
@@ -93,7 +93,7 @@
   {
     "id": "cuktech-pb1055",
     "brand_id": "cuktech",
-    "name": "酷态科 10号超级电能棒Mini",
+    "name": "Cuktech 10 Power Bank Mini",
     "capacity_mah": 10000,
     "chemistry": "Li-ion",
     "power_w": 55,
@@ -106,7 +106,7 @@
   {
     "id": "cuktech-pb100p",
     "brand_id": "cuktech",
-    "name": "酷态科 10号超级电能棒",
+    "name": "Cuktech 10 Power Bank",
     "capacity_mah": 10000,
     "chemistry": "Li-ion",
     "power_w": 150,
@@ -119,7 +119,7 @@
   {
     "id": "cuktech-wpb100p",
     "brand_id": "cuktech",
-    "name": "酷态科 10号超级磁吸电能卡",
+    "name": "Cuktech 10 Magnetic Power Bank",
     "capacity_mah": 10000,
     "chemistry": "Li-polymer",
     "power_w": 55,
@@ -132,7 +132,7 @@
   {
     "id": "cuktech-ba652u",
     "brand_id": "cuktech",
-    "name": "酷态科 10号超级电能充Fusion",
+    "name": "Cuktech 10 Fusion",
     "capacity_mah": 9000,
     "chemistry": "Li-ion",
     "power_w": 120,
@@ -145,7 +145,7 @@
   {
     "id": "cuktech-pb150p",
     "brand_id": "cuktech",
-    "name": "酷态科 10号超级电能棒Plus",
+    "name": "Cuktech 10 Power Bank Plus",
     "capacity_mah": 15000,
     "chemistry": "Li-ion",
     "power_w": 120,
@@ -158,7 +158,7 @@
   {
     "id": "cuktech-pb150s",
     "brand_id": "cuktech",
-    "name": "酷态科 15号超级电能卡Air",
+    "name": "Cuktech 15 Power Bank Air",
     "capacity_mah": 15000,
     "chemistry": "Li-polymer",
     "power_w": 100,
@@ -171,7 +171,7 @@
   {
     "id": "cuktech-pb200",
     "brand_id": "cuktech",
-    "name": "酷态科 15号电能柱SE",
+    "name": "Cuktech 15 Power Bank SE",
     "capacity_mah": 20000,
     "chemistry": "Li-ion",
     "power_w": 100,
@@ -184,7 +184,7 @@
   {
     "id": "cuktech-pb200p",
     "brand_id": "cuktech",
-    "name": "酷态科 15号电能柱",
+    "name": "Cuktech 15 Power Bank",
     "capacity_mah": 20000,
     "chemistry": "Li-ion",
     "power_w": 150,
@@ -197,7 +197,7 @@
   {
     "id": "cuktech-pb200u",
     "brand_id": "cuktech",
-    "name": "酷态科 15号超级电能柱Ultra",
+    "name": "Cuktech 15 Power Bank Ultra",
     "capacity_mah": 20000,
     "chemistry": "Li-ion",
     "power_w": 210,
@@ -210,7 +210,7 @@
   {
     "id": "cuktech-p23",
     "brand_id": "cuktech",
-    "name": "酷态科 20号超级电能柱",
+    "name": "Cuktech 20 Power Bank",
     "capacity_mah": 25000,
     "chemistry": "Li-ion",
     "power_w": 210,
@@ -223,7 +223,7 @@
   {
     "id": "cuktech-lpb252n",
     "brand_id": "cuktech",
-    "name": "酷态科 25号超级电能块SE",
+    "name": "Cuktech 25 Power Bank SE",
     "capacity_mah": 25000,
     "chemistry": "Li-ion",
     "power_w": 120,
@@ -236,7 +236,7 @@
   {
     "id": "cuktech-p01ct",
     "brand_id": "cuktech",
-    "name": "酷态科 30号超级电能仓",
+    "name": "Cuktech 30 Power Hub",
     "capacity_mah": 40000,
     "chemistry": "Li-ion",
     "power_w": 300,

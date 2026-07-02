@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-22T00:00:00Z",
+  "title": "Design System: batterytrace",
+  "extensions": {
+    "colorMeta": {
+      "toxic-green": {
+        "role": "primary",
+        "displayName": "Toxic-Warning Green",
+        "canonical": "oklch(72% 0.18 165)",
+        "tonalRamp": [
+          "oklch(15% 0.04 165)",
+          "oklch(25% 0.07 165)",
+          "oklch(35% 0.10 165)",
+          "oklch(48% 0.14 165)",
+          "oklch(62% 0.17 165)",
+          "oklch(72% 0.18 165)",
+          "oklch(82% 0.12 165)",
+          "oklch(92% 0.05 165)"
+        ]
+      },
+      "near-black": {
+        "role": "neutral",
+        "displayName": "Near-Black Field",
+        "canonical": "oklch(8% 0 0)",
+        "tonalRamp": [
+          "oklch(4% 0 0)",
+          "oklch(8% 0 0)",
+          "oklch(14% 0 0)",
+          "oklch(20% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(65% 0 0)"
+        ]
+      },
+      "amber-warn": {
+        "role": "semantic",
+        "displayName": "Amber Warning",
+        "canonical": "oklch(70% 0.16 75)"
+      },
+      "danger-red": {
+        "role": "semantic",
+        "displayName": "Danger Red",
+        "canonical": "oklch(55% 0.22 25)"
+      },
+      "recycle-teal": {
+        "role": "semantic",
+        "displayName": "Recycle Teal",
+        "canonical": "oklch(72% 0.13 185)"
+      },
+      "landfill-coral": {
+        "role": "semantic",
+        "displayName": "Landfill Coral",
+        "canonical": "oklch(68% 0.12 22)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headlines only — light weight, tight line-height."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose, descriptions, methodology. 65-75ch max line length."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Metric labels, scenario headers, table headers. Uppercase with tracking."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-modal",
+        "value": "0 4px 24px rgba(0,0,0,0.12)",
+        "purpose": "Only shadow in the system — modal backdrop depth cue."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for hover and state transitions (150ms)."
+      },
+      {
+        "name": "ease-out-quint",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Card hover lift and product image scale transitions (400ms)."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "680px" },
+      { "name": "md", "value": "860px" },
+      { "name": "lg", "value": "960px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Hero CTA)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Hero section call-to-action. Translucent on dark backgrounds.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#calculator\">SELECT A PRODUCT</a>",
+      "css": ".ds-btn-primary { display: inline-block; padding: 16px 36px; background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; font-size: 15px; font-weight: 400; letter-spacing: 0.04em; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; transition: background 0.15s, border-color 0.15s; } .ds-btn-primary:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.45); } .ds-btn-primary:focus-visible { outline: 2px solid #00c896; outline-offset: 2px; }"
+    },
+    {
+      "name": "Metric Card",
+      "kind": "card",
+      "refersTo": "metric-card",
+      "description": "Data display card for environmental metrics. Large value, equivalences, progress bar.",
+      "html": "<div class=\"ds-metric-card\"><div class=\"ds-metric-label\">🌍 CARBON FOOTPRINT</div><div class=\"ds-metric-value carbon\">14.8<span class=\"ds-metric-unit\"> kg CO₂eq</span></div><div class=\"ds-equivalence\">≈ driving 61 km</div><div class=\"ds-progress\"><div class=\"ds-progress-fill carbon\" style=\"width:58%\"></div></div></div>",
+      "css": ".ds-metric-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 28px; transition: border-color 0.15s; } .ds-metric-card:hover { border-color: #444; } .ds-metric-label { display: flex; align-items: center; gap: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: #999; margin-bottom: 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; } .ds-metric-value { font-size: 42px; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 4px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-metric-value.carbon { color: #f5a623; } .ds-metric-unit { font-size: 14px; font-weight: 400; color: #999; letter-spacing: 0; } .ds-equivalence { margin-top: 10px; font-size: 14px; color: #999; } .ds-progress { width: 100%; height: 6px; background: #2a2a2a; border-radius: 3px; margin-top: 16px; overflow: hidden; } .ds-progress-fill { height: 100%; border-radius: 3px; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); } .ds-progress-fill.carbon { background: linear-gradient(90deg, #f5a623, #e8543d); }"
+    },
+    {
+      "name": "Scenario Card (Landfill)",
+      "kind": "card",
+      "refersTo": "scenario-card",
+      "description": "Split-view scenario card showing landfill impact. No side-border stripe.",
+      "html": "<div class=\"ds-scenario-card landfill\"><div class=\"ds-scenario-title\">UNREGULATED DISPOSAL</div><div class=\"ds-scenario-value\">14.8<span> kg CO₂eq</span></div></div>",
+      "css": ".ds-scenario-card { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; padding: 16px; } .ds-scenario-card .ds-scenario-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; } .ds-scenario-card.landfill .ds-scenario-title { color: #f4907c; } .ds-scenario-card .ds-scenario-value { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; } .ds-scenario-card.landfill .ds-scenario-value { color: #f4907c; }"
+    },
+    {
+      "name": "Product Selection Card",
+      "kind": "card",
+      "refersTo": "product-card",
+      "description": "Interactive product selection card with photo, specs, and carbon preview.",
+      "html": "<div class=\"ds-product-card\"><div class=\"ds-product-img-wrap\"><img src=\"product.jpg\" alt=\"Product name\" /></div><div class=\"ds-product-info\"><h3 class=\"ds-product-name\">Product Name</h3><p class=\"ds-product-specs\">20000mAh · 50W · 440g</p><span class=\"ds-carbon-note\">14.8 kg CO₂eq</span></div></div>",
+      "css": ".ds-product-card { background: transparent; border: none; border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1); } .ds-product-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); } .ds-product-img-wrap { aspect-ratio: 4/3; overflow: hidden; background: #fafafa; } .ds-product-img-wrap img { width: 100%; height: 100%; object-fit: contain; padding: 32px; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); } .ds-product-card:hover img { transform: scale(1.06); } .ds-product-info { padding: 18px 20px; } .ds-product-name { font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 6px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; } .ds-carbon-note { font-size: 13px; color: #00b98b; font-weight: 500; }"
+    },
+    {
+      "name": "BOM Data Table",
+      "kind": "custom",
+      "refersTo": "bom-table",
+      "description": "Bill of materials table from teardown data. Dense, industrial, scannable.",
+      "html": "<div class=\"ds-bom-wrap\"><table class=\"ds-bom-table\"><thead><tr><th>TYPE</th><th>FUNCTION</th><th>BRAND</th><th>SPEC</th><th>PACKAGE</th><th>QTY</th></tr></thead><tbody><tr><td>Chip</td><td>BMS</td><td>iCM</td><td>CM1341</td><td>TSSOP16</td><td>1</td></tr></tbody></table></div>",
+      "css": ".ds-bom-wrap { overflow-x: auto; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; } .ds-bom-table { width: 100%; border-collapse: collapse; font-size: 12px; white-space: nowrap; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; } .ds-bom-table th { background: rgba(255,255,255,0.04); color: #999; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); position: sticky; top: 0; } .ds-bom-table td { padding: 9px 12px; color: #B8B8B8; border-bottom: 1px solid rgba(255,255,255,0.03); } .ds-bom-table td:first-child { color: #60a5fa; font-weight: 500; } .ds-bom-table td:last-child { color: #fff; font-weight: 600; text-align: center; } .ds-bom-table tr:hover td { background: rgba(255,255,255,0.02); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Field Report",
+    "overview": "batterytrace looks like a field investigator's report: raw data printed on near-black, methodology visible on the surface, numbers that don't need decoration to land. It is sober, precise, and urgent — the voice of someone who cracked open a power bank and catalogued what was inside.",
+    "keyCharacteristics": [
+      "Near-black foundation with toxic-warning green as the sole accent voice",
+      "Single sans-serif family at varied weights; no display/body pairing",
+      "Flat surfaces by default; depth only through tonal layering, never blur",
+      "Data-first density: metric cards, tables, and citations are the vocabulary",
+      "Dark default with full light mode; both modes avoid warm-neutral backgrounds"
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "Toxic-warning green is the sole accent. No secondary palette, no decorative color.", "section": "colors" },
+      { "name": "The No-Warm-Neutral Rule", "body": "Neither dark mode nor light mode uses cream, sand, beige, or warm-tinted near-white backgrounds.", "section": "colors" },
+      { "name": "The Single-Family Rule", "body": "One sans-serif stack for everything. Variation comes from weight and size, not from font changes.", "section": "typography" },
+      { "name": "The Tabular Numbers Rule", "body": "All data values use font-variant-numeric: tabular-nums.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. No blur. No glassmorphism. No decorative shadows.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use toxic-warning green at ≤10% of any surface",
+      "Do use tabular-nums on every data value that changes",
+      "Do translate every technical number into a concrete equivalence",
+      "Do keep citations visible — methodology is first-class",
+      "Do use text-wrap: balance on hero headlines",
+      "Do respect prefers-reduced-motion"
+    ],
+    "donts": [
+      "Don't use side-stripe borders (border-left/right > 1px as colored accent)",
+      "Don't use glassmorphism, backdrop-filter blur, or frosted-glass effects",
+      "Don't use greenwashing aesthetics: no leaf icons, nature imagery, earthy palettes",
+      "Don't use cream, sand, beige, or warm-tinted near-white backgrounds",
+      "Don't nest cards inside cards",
+      "Don't animate CSS layout properties (width, height, padding, margin)",
+      "Don't use decorative motion",
+      "Don't use gradient text",
+      "Don't use Inter, Roboto, or any downloaded font — system stack only"
+    ]
+  }
+}

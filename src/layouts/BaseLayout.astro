@@ -5,7 +5,7 @@ export interface Props {
   title: string;
   description?: string;
 }
-const { title, description = '充电宝环境代价计算器 — 基于学术文献的估算工具' } = Astro.props;
+const { title, description = 'Power Bank Environmental Impact Calculator — estimates based on academic literature' } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -20,15 +20,15 @@ const { title, description = '充电宝环境代价计算器 — 基于学术文
   <header class="header">
     <div class="logo"><a href="/">battery<span>trace</span></a></div>
     <nav class="nav-links">
-      <a href="/#power-banks">Power Bank</a>
-      <a href="/">Calculator</a>
+      <a href="/">Home</a>
+      <a href="/calculator">Calculator</a>
       <a href="/materials">Materials</a>
       <a href="/reference">About Us</a>
     </nav>
   </header>
   <slot />
   <footer class="site-footer">
-    <p>数据基于已发表学术文献的估算值，非品牌实测。<br />Data based on estimations, not experimental measurements.</p>
+    <p>All figures are literature-based estimates, not brand measurements.<br />Data based on estimations, not experimental measurements.</p>
   </footer>
 </body>
 </html>
